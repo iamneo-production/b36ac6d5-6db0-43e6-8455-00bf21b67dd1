@@ -1,4 +1,4 @@
-import "./new.scss";
+import "./new.css";
 import { useState } from "react";
 
 const New = ({ inputs, title }) => {
