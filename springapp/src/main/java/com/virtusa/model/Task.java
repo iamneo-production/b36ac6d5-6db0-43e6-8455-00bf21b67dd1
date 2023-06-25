@@ -82,7 +82,7 @@ public class Task {
 	}
 	
 	public String getCompletedAt() {
-		return completed_at;
+		return completedAt;
 	}
 
 	public void setCompletedAt(String completedAt) {
