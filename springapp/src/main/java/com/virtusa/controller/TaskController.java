@@ -43,11 +43,11 @@ public class TaskController {
 
 	    	task.setName(tasksDetails.getName());
 	    	task.setDescription(tasksDetails.getDescription());
-	    	task.setAssigned_to(tasksDetails.getAssigned_to());
-	    	task.setDue_date(tasksDetails.getDue_date());
-	    	task.setCompleted_at(tasksDetails.getCompleted_at());
-	    	task.setCreated_at(tasksDetails.getCreated_at());
-	    	task.setUpdated_at(tasksDetails.getUpdated_at());
+	    	task.setAssignedTo(tasksDetails.getAssignedTo());
+	    	task.setDueDate(tasksDetails.getDueDate());
+	    	task.setCompletedAt(tasksDetails.getCompletedAt());
+	    	task.setCreatedAt(tasksDetails.getCreatedAt());
+	    	task.setUpdatedAt(tasksDetails.getUpdatedAt());
 	        final Task updatedTask = taskService.updateTask(task);
 	        return ResponseEntity.ok(updatedTask);
 	    }

@@ -1,6 +1,7 @@
 package com.virtusa.model;
 import java.util.*;
 import javax.persistence.CascadeType;
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ticket")
+@Table(name = "tickets")
 public class Ticket {
 	
 	
@@ -33,13 +34,13 @@ public class Ticket {
 	String status;
 	
 	@Column(name = "ticket_assigned_to")
-	String assigned_to;
+	String assignedTo;
 	
 	@Column(name = "ticket_created_at")
-	String created_at;
+	String createdAt;
 	
 	@Column(name = "ticket_updated_at")
-	String updated_at;
+	String updatedAt;
 	
 	public Ticket() {
 		super();
@@ -85,27 +86,27 @@ public class Ticket {
 		this.status = status;
 	}
 
-	public String getAssigned_to() {
-		return assigned_to;
+	public String getAssignedTo() {
+		return assignedTo;
 	}
 
-	public void setAssigned_to(String assigned_to) {
-		this.assigned_to = assigned_to;
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
 	}
 
-	public String getCreated_at() {
-		return created_at;
+	public String getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreated_at(String created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
 	}
 	
-	public String getUpdated_at() {
-		return updated_at;
+	public String getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdated_at(String updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }

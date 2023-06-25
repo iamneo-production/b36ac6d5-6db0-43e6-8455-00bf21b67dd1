@@ -44,7 +44,7 @@ public class OpportunityController {
 	    	opportunity.setName(opportunitiesDetails.getName());
 	    	opportunity.setStatus(opportunitiesDetails.getStatus());
 	    	opportunity.setValue(opportunitiesDetails.getValue());
-	    	opportunity.setClose_date(opportunitiesDetails.getClose_date());
+	    	opportunity.setCloseDate(opportunitiesDetails.getCloseDate());
 	    	opportunity.setNotes(opportunitiesDetails.getNotes());
 	        final Opportunity updatedOpportunity = opportunityService.updateOpportunity(opportunity);
 	        return ResponseEntity.ok(updatedOpportunity);

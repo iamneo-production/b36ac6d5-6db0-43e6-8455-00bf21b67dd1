@@ -34,7 +34,7 @@ public class Opportunity {
 	String value;
 	
 	@Column(name = "opportunity_close_date")
-	String close_date;
+	String closeDate;
 	
 	@Column(name = "opportunity_notes")
 	String notes;
@@ -83,12 +83,12 @@ public class Opportunity {
 		this.value = value;
 	}
 
-	public String getClose_date() {
-		return close_date;
+	public String getCloseDate() {
+		return closeDate;
 	}
 
-	public void setClose_date(String close_date) {
-		this.close_date = close_date;
+	public void setCloseDate(String closeDate) {
+		this.closeDate = closeDate;
 	}
 
 	public String getNotes() {

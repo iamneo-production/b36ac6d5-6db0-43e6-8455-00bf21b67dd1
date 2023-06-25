@@ -44,9 +44,9 @@ public class TicketController {
 	    	ticket.setSubject(ticketsDetails.getSubject());
 	    	ticket.setDescription(ticketsDetails.getDescription());
 	    	ticket.setStatus(ticketsDetails.getStatus());
-	    	ticket.setAssigned_to(ticketsDetails.getAssigned_to());
-	    	ticket.setCreated_at(ticketsDetails.getCreated_at());
-	    	ticket.setUpdated_at(ticketsDetails.getUpdated_at());
+	    	ticket.setAssignedTo(ticketsDetails.getAssignedTo());
+	    	ticket.setCreatedAt(ticketsDetails.getCreatedAt());
+	    	ticket.setUpdatedAt(ticketsDetails.getUpdatedAt());
 	        final Ticket updatedTicket = ticketService.updateTicket(ticket);
 	        return ResponseEntity.ok(updatedTicket);
 	    }

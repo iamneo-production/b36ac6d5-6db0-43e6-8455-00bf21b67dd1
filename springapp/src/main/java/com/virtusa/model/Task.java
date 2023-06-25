@@ -23,19 +23,19 @@ public class Task {
 	String description;
 	
 	@Column(name = "task_assigned_to")
-	String assigned_to;
+	String assignedTo;
 	
 	@Column(name = "task_due_date")
-	String due_date;
+	String dueDate;
 	
 	@Column(name = "task_completed_at")
-	String completed_at;
+	String completedAt;
 	
 	@Column(name = "task_created_at")
-	String created_at;
+	String createdAt;
 	
 	@Column(name = "task_updated_at")
-	String updated_at;
+	String updatedAt;
 	
 	public Task() {
 		super();
@@ -65,43 +65,43 @@ public class Task {
 		this.description = description;
 	}
 
-	public String getAssigned_to() {
-		return assigned_to;
+	public String getAssignedTo() {
+		return assignedTo;
 	}
 
-	public void setAssigned_to(String assigned_to) {
-		this.assigned_to = assigned_to;
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
 	}
 
-	public String getDue_date() {
-		return due_date;
+	public String getDueDate() {
+		return dueDate;
 	}
 
-	public void setDue_date(String due_date) {
-		this.due_date = due_date;
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 	
-	public String getCompleted_at() {
+	public String getCompletedAt() {
 		return completed_at;
 	}
 
-	public void setCompleted_at(String completed_at) {
-		this.completed_at = completed_at;
+	public void setCompletedAt(String completedAt) {
+		this.completedAt = completedAt;
 	}
 	
-	public String getCreated_at() {
-		return created_at;
+	public String getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreated_at(String created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
 	}
 	
-	public String getUpdated_at() {
-		return updated_at;
+	public String getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdated_at(String updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }
