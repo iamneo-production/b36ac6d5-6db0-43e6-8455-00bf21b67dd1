@@ -13,31 +13,31 @@ public class Lead {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    private long id;
 	
 	@Column(name = "Name")
-	String name;
+	private String name;
 	
 	@Column(name = "Email")
-	String email;
+	private String email;
 	
 	@Column(name = "Phone")
-	long phone;
+	private String phone;
 	
 	@Column(name = "Source")
-	String source;
+	private String source;
 	
 	@Column(name = "Status")
-	String status;
+	private String status;
 	
 	@Column(name = "Notes")
-	String notes;
+	private String notes;
 	
 	public Lead() {
 		
 	}
 	
-	public Lead(String name, String email, long phone, String source, String status, String notes) {
+	public Lead(String name, String email, String phone, String source, String status, String notes) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -64,10 +64,10 @@ public class Lead {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getSource() {

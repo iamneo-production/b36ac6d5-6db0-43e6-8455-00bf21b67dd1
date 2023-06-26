@@ -17,27 +17,27 @@ public class Sale {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	long id;
+	private long id;
 	
 	@Column(name = "sale_name")
-	String name;
+	private String name;
 
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
-	Customer customer;
+	private Customer customer;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "opportunity_id")
-	Opportunity opportunity;
+	private Opportunity opportunity;
 	
 	@Column(name = "sale_amount")
-	String amount;
+	private double amount;
 	
 	@Column(name = "sale_date")
 	String date;
 	
 	@Column(name = "sale_notes")
-	String notes;
+	private String notes;
 	
 	public Sale() {
 		super();
@@ -75,11 +75,11 @@ public class Sale {
 		this.opportunity = opportunity;
 	}
 
-	public String getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(String amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 

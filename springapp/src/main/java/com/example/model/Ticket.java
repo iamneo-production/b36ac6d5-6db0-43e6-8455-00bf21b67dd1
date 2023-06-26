@@ -18,33 +18,42 @@ public class Ticket {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	long id;
+	private long id;
 
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
-	Customer customer;
+	private Customer customer;
 	
 	@Column(name = "ticket_subject")
-	String subject;
+	private String subject;
 	
 	@Column(name = "ticket_description")
-	String description;
+	private String description;
 	
 	@Column(name = "ticket_status")
-	String status;
+	private String status;
 	
 	@Column(name = "ticket_assigned_to")
-	String assignedTo;
+	private String assignedTo;
 	
 	@Column(name = "ticket_created_at")
-	String createdAt;
+	private LocalDateTime createdAt;
 	
 	@Column(name = "ticket_updated_at")
-	String updatedAt;
+	private LocalDateTime updatedAt;
 	
 	public Ticket() {
 		super();
 	}
+	public Ticket(Customer customer, String subject, String description, String status, String assignedTo, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.customer = customer;
+        this.subject = subject;
+        this.description = description;
+        this.status = status;
+        this.assignedTo = assignedTo;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
 	public long getId() {
 		return id;
@@ -94,19 +103,19 @@ public class Ticket {
 		this.assignedTo = assignedTo;
 	}
 
-	public String getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 	
-	public String getUpdatedAt() {
+	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(String updatedAt) {
+	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 }

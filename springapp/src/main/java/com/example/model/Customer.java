@@ -14,16 +14,16 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "customer_id")
-	long id;
+	private long id;
 
 	@Column(name = "customer_name" )
-	String name;
+	private String name;
 
 	@Column(name = "customer_email")
-	String email;
+	private String email;
 
 	@Column(name = "customer_phone")
-	long phone;
+	private String phone;
 
 	@Column(name = "customer_address")
 	String address;
@@ -37,7 +37,7 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-	public Customer(long id, String name, String email, long phone, String address, String communicationHistory, String purchaseHistory) {
+	public Customer(long id, String name, String email, String phone, String address, String communicationHistory, String purchaseHistory) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -69,10 +69,10 @@ public class Customer {
 		this.email = email;
 	}
 
-	public long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

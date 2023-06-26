@@ -14,28 +14,28 @@ public class Task {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	long id;
+	private long id;
 	
 	@Column(name = "task_name")
-	String name;
+	private String name;
 	
 	@Column(name = "task_description")
-	String description;
+	private String description;
 	
 	@Column(name = "task_assigned_to")
-	String assignedTo;
+	private String assignedTo;
 	
 	@Column(name = "task_due_date")
-	String dueDate;
+	private String dueDate;
 	
 	@Column(name = "task_completed_at")
-	String completedAt;
+	private String completedAt;
 	
 	@Column(name = "task_created_at")
-	String createdAt;
+	private String createdAt;
 	
 	@Column(name = "task_updated_at")
-	String updatedAt;
+	private String updatedAt;
 	
 	public Task() {
 		super();

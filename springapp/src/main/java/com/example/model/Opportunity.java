@@ -18,26 +18,26 @@ public class Opportunity {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "opportunity_id")
-	long id;
+	private long id;
 	
 	@Column(name = "opportunity_name")
-	String name;
+	private String name;
 
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
-	Customer customer;
+	private Customer customer;
 	
 	@Column(name = "opportunity_status")
-	String status;
+	private String status;
 	
 	@Column(name = "opportunity_value")
-	String value;
+	private String value;
 	
 	@Column(name = "opportunity_close_date")
-	String closeDate;
+	private String closeDate;
 	
 	@Column(name = "opportunity_notes")
-	String notes;
+	private String notes;
 	
 	public Opportunity() {
 		super();
