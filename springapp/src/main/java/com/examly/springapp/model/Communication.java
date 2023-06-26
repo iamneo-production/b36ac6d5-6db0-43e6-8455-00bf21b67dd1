@@ -2,9 +2,14 @@ package com.examly.springapp.model;
 
 import javax.persistence.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @Entity
-@Table(name = "communication")
 public class Communication {
-    // Define the properties and methods of the Communication class
-    // ...
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }
