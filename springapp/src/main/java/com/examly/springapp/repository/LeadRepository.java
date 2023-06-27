@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TicketRepository extends JpaRepository<com.examly.springapp.model.Ticket, Long>{
+public interface LeadRepository extends JpaRepository<com.examly.springapp.model.Lead, Long>{
 
 }
