@@ -1,31 +1,39 @@
-.home {
-  display: flex;
+.homeuser{
+  height: auto;
+  width:max-content;
+  box-shadow: 0 2px 8px 0 rgba(128, 125, 125, 0.2);
+  margin-left: 2%;
+  border: 10px solid white;
 }
 
-.homeContainer {
-  flex: 6;
+table {
+  border-collapse: collapse;
 }
 
-.homeContainer .widgets,
-.homeContainer .charts {
-  display: flex;
-  padding: 20px;
-  gap: 20px;
+th, td {
+  padding:10px 12px;
+  text-align: center;
 }
 
-.homeContainer .charts {
-  padding: 5px 20px;
+.table{
+  color: rgb(70, 124, 138);
 }
 
-.homeContainer .listContainer {
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-  padding: 20px;
-  margin: 20px;
+.ved{
+  display: block;
 }
 
-.homeContainer .listContainer .listTitle {
-  font-weight: 500;
-  color: gray;
-  margin-bottom: 15px;
+.viewImage{
+  height:25px;
+  width: 25px;
+}
+
+.edituser{
+  height:25px;
+  width: 25px;
+}
+
+.deleteUser{
+  height:25px;
+  width: 25px;
 }
