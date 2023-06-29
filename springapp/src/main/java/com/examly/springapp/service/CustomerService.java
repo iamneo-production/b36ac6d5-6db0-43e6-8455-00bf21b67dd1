@@ -1,26 +1,19 @@
 package com.examly.springapp.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Customer;
 
-public interface CustomerService {
-	
-    
-    public List < Customer > getAllCustomers() ;
-   
-   
-    public Customer createCustomer(Customer customer) ;
-    
-    
-    public  Customer updateCustomer(Customer customer);
-      
-   
-    public void deleteCustomer(Customer customer);
-    
-    public Optional<Customer> findById(Long custId);
-    
-    	
+import java.util.List;
 
+public interface CustomerService {
+
+    List<Customer> getAllCustomers();
+
+    Customer getCustomerById(Long customerId) throws ResourceNotFoundException;
+
+    Customer createCustomer(Customer customer);
+
+    Customer updateCustomer(Long customerId, Customer customerDetails) throws ResourceNotFoundException;
+
+    void deleteCustomer(Long customerId) throws ResourceNotFoundException;
 }
