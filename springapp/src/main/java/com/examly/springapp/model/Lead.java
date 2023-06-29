@@ -1,15 +1,10 @@
 package com.examly.springapp.model;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Lead {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -19,12 +14,13 @@ public class Lead {
     private String status;
     private String notes;
 
-    // constructors
+    // Constructors, getters, and setters
 
     public Lead() {
     }
 
-    public Lead(String name, String email, String phone, String source, String status, String notes) {
+    public Lead(Long id, String name, String email, String phone, String source, String status, String notes) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -33,7 +29,7 @@ public class Lead {
         this.notes = notes;
     }
 
-    // getters and setters
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -113,24 +109,24 @@ public class Lead {
 
         Lead lead = (Lead) o;
 
-        if (!id.equals(lead.id)) return false;
-        if (!name.equals(lead.name)) return false;
-        if (!email.equals(lead.email)) return false;
-        if (!phone.equals(lead.phone)) return false;
-        if (!source.equals(lead.source)) return false;
-        if (!status.equals(lead.status)) return false;
-        return notes.equals(lead.notes);
+        if (id != null ? !id.equals(lead.id) : lead.id != null) return false;
+        if (name != null ? !name.equals(lead.name) : lead.name != null) return false;
+        if (email != null ? !email.equals(lead.email) : lead.email != null) return false;
+        if (phone != null ? !phone.equals(lead.phone) : lead.phone != null) return false;
+        if (source != null ? !source.equals(lead.source) : lead.source != null) return false;
+        if (status != null ? !status.equals(lead.status) : lead.status != null) return false;
+        return notes != null ? notes.equals(lead.notes) : lead.notes == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + phone.hashCode();
-        result = 31 * result + source.hashCode();
-        result = 31 * result + status.hashCode();
-        result = 31 * result + notes.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (source != null ? source.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (notes != null ? notes.hashCode() : 0);
         return result;
     }
 }
