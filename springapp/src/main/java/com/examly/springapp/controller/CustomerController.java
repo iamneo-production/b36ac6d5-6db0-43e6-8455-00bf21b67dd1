@@ -1,65 +1,55 @@
 package com.examly.springapp.controller;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.persistence.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
+@RequestMapping("/customer")
 public class CustomerController {
-	
-		@Autowired
-		private CustomerService customerService;
-	 	
 
-	    @GetMapping("/customers")
-	    public List < Customer > getAllCustomers() {
-	        return customerService.getAllCustomers();
-	    }
-	    
-	    
-	    @PostMapping("/customers")
-	    public Customer createCustomer( @RequestBody Customer customer) {
-	        return customerService.createCustomer(customer);
-	    }
-	    
-	    @PutMapping("/customers/{id}")
-	    public ResponseEntity < Customer > updateCustomer(@PathVariable(value = "id") Long custId,
-	         @RequestBody Customer customersDetails) throws ResourceNotFoundException {
-	    	Customer customer = customerService.findById(custId)
-	            .orElseThrow(() -> new ResourceNotFoundException("Customer not found for this id :: " + custId));
+    @Autowired
+    private CustomerService customerService;
 
-	    	customer.setName(customersDetails.getName());
-	    	customer.setEmail(customersDetails.getEmail());
-	    	customer.setPhone(customersDetails.getPhone());
-	    	customer.setAddress(customersDetails.getAddress());
-	    	customer.setCommunicationHistory(customersDetails.getCommunicationHistory());
-	    	customer.setPurchaseHistory(customersDetails.getPurchaseHistory());
-	        final Customer updatedCustomer = customerService.updateCustomer(customer);
-	        return ResponseEntity.ok(updatedCustomer);
-	    }
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers();
+    }
 
-	    @DeleteMapping("/customers/{id}")
-	    public Map < String, Boolean > deleteCustomer(@PathVariable(value = "id") Long custId)
-	    throws ResourceNotFoundException {
-	    	Customer customer = customerService.findById(custId)
-	            .orElseThrow(() -> new ResourceNotFoundException("Customer not found for this id :: " + custId));
+    @PostMapping
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+        Customer createdCustomer = customerService.createCustomer(customer);
+        return ResponseEntity.ok(createdCustomer);
+    }
 
-	    	customerService.deleteCustomer(customer);
-	        Map < String, Boolean > response = new HashMap < > ();
-	        response.put("deleted", Boolean.TRUE);
-	        return response;
-	    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "id") Long customerId)
+            throws ResourceNotFoundException {
+        Customer customer = customerService.getCustomerById(customerId);
+        return ResponseEntity.ok().body(customer);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Customer> updateCustomer(
+            @PathVariable(value = "id") Long customerId,
+            @RequestBody Customer customerDetails) throws ResourceNotFoundException {
+        Customer updatedCustomer = customerService.updateCustomer(customerId, customerDetails);
+        return ResponseEntity.ok(updatedCustomer);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteCustomer(@PathVariable(value = "id") Long customerId)
+            throws ResourceNotFoundException {
+        customerService.deleteCustomer(customerId);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
 }

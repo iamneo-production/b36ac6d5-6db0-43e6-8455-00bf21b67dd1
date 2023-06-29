@@ -1,106 +1,139 @@
 package com.examly.springapp.model;
-import com.examly.springapp.model.Communication;
-import com.examly.springapp.model.Purchase;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "customer")
 public class Customer {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "name")
-  private String name;
+    private String name;
+    private String email;
+    private String phone;
+    private String address;
 
-  @Column(name = "email")
-  private String email;
+    @ElementCollection
+    private List<String> communicationHistory;
 
-  @Column(name = "phone")
-  private String phone;
+    @ElementCollection
+    private List<String> purchaseHistory;
 
-  @Column(name = "address")
-  private String address;
-  
-  @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-  private List<Communication> communicationHistory;
+    // constructors, getters, and setters
 
-  @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-  private List<Purchase> purchaseHistory;
+    public Customer() {
+    }
 
-  // Constructors
+    public Customer(String name, String email, String phone, String address,
+                    List<String> communicationHistory, List<String> purchaseHistory) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.communicationHistory = communicationHistory;
+        this.purchaseHistory = purchaseHistory;
+    }
 
-  public Customer() {
-  }
+    // getters and setters
 
-  public Customer(Long id, String name, String email, String phone, String address,List<Communication> communicationHistory, List<Purchase> purchaseHistory) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-    this.phone = phone;
-    this.address = address;
-    this.communicationHistory = communicationHistory;
-    this.purchaseHistory = purchaseHistory;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  // Getters and Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public Long getId() {
-    return id;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public String getEmail() {
-    return email;
-  }
+    public String getPhone() {
+        return phone;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-  public String getPhone() {
-    return phone;
-  }
+    public String getAddress() {
+        return address;
+    }
 
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-  public String getAddress() {
-    return address;
-  }
+    public List<String> getCommunicationHistory() {
+        return communicationHistory;
+    }
 
-  public void setAddress(String address) {
-    this.address = address;
-  }
-  
-   public List<Communication> getCommunicationHistory() {
-    return communicationHistory;
-  }
+    public void setCommunicationHistory(List<String> communicationHistory) {
+        this.communicationHistory = communicationHistory;
+    }
 
-  public void setCommunicationHistory(List<Communication> communicationHistory) {
-    this.communicationHistory = communicationHistory;
-  }
+    public List<String> getPurchaseHistory() {
+        return purchaseHistory;
+    }
 
-  public List<Purchase> getPurchaseHistory() {
-    return purchaseHistory;
-  }
+    public void setPurchaseHistory(List<String> purchaseHistory) {
+        this.purchaseHistory = purchaseHistory;
+    }
 
-  public void setPurchaseHistory(List<Purchase> purchaseHistory) {
-    this.purchaseHistory = purchaseHistory;
-  }
+    // toString, equals, hashCode
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", communicationHistory=" + communicationHistory +
+                ", purchaseHistory=" + purchaseHistory +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (!id.equals(customer.id)) return false;
+        if (!name.equals(customer.name)) return false;
+        if (!email.equals(customer.email)) return false;
+        if (!phone.equals(customer.phone)) return false;
+        if (!address.equals(customer.address)) return false;
+        if (!communicationHistory.equals(customer.communicationHistory)) return false;
+        return purchaseHistory.equals(customer.purchaseHistory);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + phone.hashCode();
+        result = 31 * result + address.hashCode();
+        result = 31 * result + communicationHistory.hashCode();
+        result = 31 * result + purchaseHistory.hashCode();
+        return result;
+    }
 }
