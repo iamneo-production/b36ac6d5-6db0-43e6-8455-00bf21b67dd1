@@ -1,6 +1,7 @@
 package com.examly.springapp.model;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
 @Entity
 @Table(name = "purchase")

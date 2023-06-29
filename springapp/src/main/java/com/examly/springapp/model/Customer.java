@@ -27,11 +27,11 @@ public class Customer {
   private String address;
 
   @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "communication_id")
+  @JoinColumn(name = "communicationId")
   private List<Communication> communicationHistory= new ArrayList<>();
 
   @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "purchase_id")
+  @JoinColumn(name = "purchaseId")
   private List<Purchase> purchaseHistory= new ArrayList<>();
 
   // Constructors
