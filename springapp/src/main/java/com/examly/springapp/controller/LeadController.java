@@ -1,4 +1,5 @@
 package com.examly.springapp.controller;
+
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Lead;
 import com.examly.springapp.service.LeadService;
@@ -6,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,10 +51,14 @@ public class LeadController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteLead(@PathVariable(value = "id") Long leadId)
-            throws ResourceNotFoundException {
-        leadService.deleteLead(leadId);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return ResponseEntity.ok(response);
-    }
+    throws ResourceNotFoundException {
+        try {
+            leadService.deleteLead(leadId);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
+            return ResponseEntity.ok(response);
+        } catch (ResourceNotFoundException ex) {
+            return ResponseEntity.notFound().build(); 
+        }}
+
 }
