@@ -18,7 +18,6 @@ function App() {
      
    
     <div className={darkMode ? "app dark" : "app"}>
-      {/* <Navbar/> */}
       <Navbar style={{marignLeft:'50px'}}/>
         <Routes>
         
