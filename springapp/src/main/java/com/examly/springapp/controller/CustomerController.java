@@ -24,10 +24,12 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Boolean> createCustomer(@RequestBody Customer customer) {
         Customer createdCustomer = customerService.createCustomer(customer);
-        return ResponseEntity.ok(createdCustomer);
+        boolean isSuccess = createdCustomer != null; // Check if customer creation was successful
+        return ResponseEntity.ok(isSuccess);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "id") Long customerId)

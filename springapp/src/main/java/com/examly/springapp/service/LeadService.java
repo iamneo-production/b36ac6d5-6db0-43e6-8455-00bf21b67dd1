@@ -16,4 +16,6 @@ public interface LeadService {
     Lead updateLead(Long leadId, Lead leadDetails) throws ResourceNotFoundException;
 
     void deleteLead(Long leadId) throws ResourceNotFoundException;
+    
+    void deleteAllLeads();
 }

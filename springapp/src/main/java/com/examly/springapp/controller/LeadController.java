@@ -4,6 +4,7 @@ import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Lead;
 import com.examly.springapp.service.LeadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +25,13 @@ public class LeadController {
     }
 
     @PostMapping
-    public ResponseEntity<Lead> createLead(@RequestBody Lead lead) {
+    public ResponseEntity<Boolean> createLead(@RequestBody Lead lead) {
         Lead createdLead = leadService.createLead(lead);
-        return ResponseEntity.ok(createdLead);
+        if (createdLead != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(true);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
+        }
     }
 
     @GetMapping("/{id}")

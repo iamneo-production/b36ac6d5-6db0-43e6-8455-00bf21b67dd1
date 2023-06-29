@@ -53,4 +53,9 @@ public class LeadServiceImpl implements LeadService {
         Lead lead = getLeadById(leadId);
         leadRepository.delete(lead);
     }
+    
+    @Override
+    public void deleteAllLeads() {
+        leadRepository.deleteAll();
+    }
 }
