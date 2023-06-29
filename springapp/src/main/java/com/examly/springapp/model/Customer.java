@@ -1,9 +1,8 @@
 package com.examly.springapp.model;
-import javax.persistence.*;
 import com.examly.springapp.model.Communication;
 import com.examly.springapp.model.Purchase;
+import javax.persistence.*;
 import java.util.List;
-import java.util.ArrayList;
 
 @Entity
 @Table(name = "customer")
@@ -25,14 +24,12 @@ public class Customer {
 
   @Column(name = "address")
   private String address;
+  
+  @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+  private List<Communication> communicationHistory;
 
-  @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "communicationId")
-  private List<Communication> communicationHistory= new ArrayList<>();
-
-  @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "purchaseId")
-  private List<Purchase> purchaseHistory= new ArrayList<>();
+  @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+  private List<Purchase> purchaseHistory;
 
   // Constructors
 
@@ -90,8 +87,8 @@ public class Customer {
   public void setAddress(String address) {
     this.address = address;
   }
-
-  public List<Communication> getCommunicationHistory() {
+  
+   public List<Communication> getCommunicationHistory() {
     return communicationHistory;
   }
 
