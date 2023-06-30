@@ -1,11 +1,18 @@
 package com.examly.springapp.model;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 
 @Entity
 @Table(name = "purchase")
 public class Purchase {
-    // Define the properties and methods of the Purchase class
-    // ...
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
+
+  // Define your purchase fields
+
+  // Constructors, getters, and setters
+
 }
