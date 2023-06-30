@@ -9,7 +9,6 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String email;
     private String phone;
@@ -20,12 +19,8 @@ public class Customer {
 
     @ElementCollection
     private List<String> purchaseHistory;
-
-    // constructors, getters, and setters
-
     public Customer() {
     }
-
     public Customer(String name, String email, String phone, String address,
                     List<String> communicationHistory, List<String> purchaseHistory) {
         this.name = name;
@@ -35,8 +30,6 @@ public class Customer {
         this.communicationHistory = communicationHistory;
         this.purchaseHistory = purchaseHistory;
     }
-
-    // getters and setters
 
     public Long getId() {
         return id;
@@ -92,48 +85,5 @@ public class Customer {
 
     public void setPurchaseHistory(List<String> purchaseHistory) {
         this.purchaseHistory = purchaseHistory;
-    }
-
-    // toString, equals, hashCode
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", communicationHistory=" + communicationHistory +
-                ", purchaseHistory=" + purchaseHistory +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Customer customer = (Customer) o;
-
-        if (!id.equals(customer.id)) return false;
-        if (!name.equals(customer.name)) return false;
-        if (!email.equals(customer.email)) return false;
-        if (!phone.equals(customer.phone)) return false;
-        if (!address.equals(customer.address)) return false;
-        if (!communicationHistory.equals(customer.communicationHistory)) return false;
-        return purchaseHistory.equals(customer.purchaseHistory);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + phone.hashCode();
-        result = 31 * result + address.hashCode();
-        result = 31 * result + communicationHistory.hashCode();
-        result = 31 * result + purchaseHistory.hashCode();
-        return result;
     }
 }
