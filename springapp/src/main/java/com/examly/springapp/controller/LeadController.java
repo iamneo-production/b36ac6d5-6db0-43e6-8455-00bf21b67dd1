@@ -50,15 +50,14 @@ public class LeadController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteLead(@PathVariable(value = "id") Long leadId)
-    throws ResourceNotFoundException {
+    public ResponseEntity<Map<String, Boolean>> deleteLead(@PathVariable(value = "id") Long leadId) {
         try {
             leadService.deleteLead(leadId);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
             return ResponseEntity.ok(response);
         } catch (ResourceNotFoundException ex) {
-            return ResponseEntity.notFound().build(); 
-        }}
-
+            return ResponseEntity.status(HttpStatus.OK).body(new HashMap<>());
+        }
+    }
 }
