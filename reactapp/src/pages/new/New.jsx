@@ -5,6 +5,7 @@ const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
 
   return (
+    
     <div className="new">
 
       <div className="newContainer">
@@ -17,9 +18,9 @@ const New = ({ inputs, title }) => {
           <div className="right">
             <form>
               <div className="formInput">
-                <label htmlFor="file">
+                <label htmlFor="file" className="label"> 
                 </label>
-                <input
+                <input className="input"
                   type="file"
                   id="file"
                   onChange={(e) => setFile(e.target.files[0])}
@@ -29,11 +30,11 @@ const New = ({ inputs, title }) => {
 
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
+                  <label className="label">{input.label}</label>
+                  <input type={input.type} placeholder={input.placeholder} className="input" />
                 </div>
               ))}
-              <button>Send</button>
+              <button className="my-button">Send</button>
             </form>
           </div>
         </div>
