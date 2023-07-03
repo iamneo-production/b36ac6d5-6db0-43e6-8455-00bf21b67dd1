@@ -40,6 +40,4 @@ public class CustomerServiceImpl implements CustomerService{
 	public Optional<Customer> findById(Long custId) {
 		return customerRepository.findById(custId);
 	}
-
-	
 }
