@@ -1,0 +1,81 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    flex: 1;
+    margin-right: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-button,
+  .create-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .create-button {
+    margin-left: 10px;
+    background-color: #4caf50;
+  }
+  
+  .table-container {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-container th,
+  .table-container td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .table-container th {
+    background-color: #f2f2f2;
+  }
+  
+  .table-container td:last-child {
+    white-space: nowrap;
+  }
+  
+  .action-buttons button {
+    margin-right: 5px;
+    padding: 4px 8px;
+    font-size: 14px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .action-buttons button:last-child {
+    margin-right: 0;
+  }
+  
+  .loading {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
