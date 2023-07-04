@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import './CreateCustomer.css';
+import './CreateLead.css';
 
-const CreateCustomer = ({ onCreate, onCancel }) => {
+const CreateLead = ({ onCreate, onCancel }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
-  const [communicationHistory, setCommunicationHistory] = useState('');
-  const [purchaseHistory, setPurchaseHistory] = useState('');
+  const [source, setSource] = useState('');
+  const [status, setStatus] = useState('');
+  const [notes, setNotes] = useState('');
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -21,40 +21,40 @@ const CreateCustomer = ({ onCreate, onCancel }) => {
     setPhone(e.target.value);
   };
 
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
+  const handleSourceChange = (e) => {
+    setSource(e.target.value);
   };
 
-  const handleCommunicationHistoryChange = (e) => {
-    setCommunicationHistory(e.target.value);
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
   };
 
-  const handlePurchaseHistoryChange = (e) => {
-    setPurchaseHistory(e.target.value);
+  const handleNotesChange = (e) => {
+    setNotes(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newCustomer = {
+    const newLead = {
       name,
       email,
       phone,
-      address,
-      communicationHistory: communicationHistory.split(',').map((item) => item.trim()),
-      purchaseHistory: purchaseHistory.split(',').map((item) => item.trim()),
+      source,
+      status,
+      notes,
     };
-    onCreate(newCustomer);
+    onCreate(newLead);
     setName('');
     setEmail('');
     setPhone('');
-    setAddress('');
-    setCommunicationHistory('');
-    setPurchaseHistory('');
+    setSource('');
+    setStatus('');
+    setNotes('');
   };
 
   return (
-    <div className="create-customer-container">
-      <h3>Create Customer</h3>
+    <div className="create-lead-container">
+      <h3>Create Lead</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name" className="form-label">
@@ -93,39 +93,39 @@ const CreateCustomer = ({ onCreate, onCancel }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="address" className="form-label">
-            Address
+          <label htmlFor="source" className="form-label">
+            Source
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="source"
+            value={source}
+            onChange={handleSourceChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="status" className="form-label">
+            Status
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="status"
+            value={status}
+            onChange={handleStatusChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="notes" className="form-label">
+            Notes
           </label>
           <textarea
             className="form-control"
-            id="address"
-            value={address}
-            onChange={handleAddressChange}
+            id="notes"
+            value={notes}
+            onChange={handleNotesChange}
           ></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="communicationHistory" className="form-label">
-            Communication History (comma-separated)
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="communicationHistory"
-            value={communicationHistory}
-            onChange={handleCommunicationHistoryChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="purchaseHistory" className="form-label">
-            Purchase History (comma-separated)
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="purchaseHistory"
-            value={purchaseHistory}
-            onChange={handlePurchaseHistoryChange}
-          />
         </div>
         <div className="button-group">
           <button type="submit" className="btn btn-primary me-2">
@@ -140,4 +140,4 @@ const CreateCustomer = ({ onCreate, onCancel }) => {
   );
 };
 
-export default CreateCustomer;
+export default CreateLead;

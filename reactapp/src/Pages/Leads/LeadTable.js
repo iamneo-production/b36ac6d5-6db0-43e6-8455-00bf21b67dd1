@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import CreateCustomer from './CreateCustomer';
-import UpdateCustomer from './UpdateCustomer';
-import SearchCustomer from './SearchCustomer';
+import CreateLead from './CreateLead';
+import UpdateLead from './UpdateLead';
+import SearchLead from './SearchLead';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/customers';
+const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/lead';
 
-const CustomerTable = () => {
-  const [customers, setCustomers] = useState([]);
+const LeadTable = () => {
+  const [leads, setLeads] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [selectedLead, setSelectedLead] = useState(null);
 
   useEffect(() => {
-    fetchCustomers();
+    fetchLeads();
   }, []);
 
-  const fetchCustomers = () => {
+  const fetchLeads = () => {
     setLoading(true);
     fetch(BASE_URL)
       .then(response => response.json())
-      .then(data => setCustomers(data))
+      .then(data => setLeads(data))
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
@@ -38,67 +38,67 @@ const CustomerTable = () => {
       .then(response => response.json())
       .then(data => {
         if (data) {
-          setCustomers([data]);
+          setLeads([data]);
         } else {
-          setCustomers([]);
+          setLeads([]);
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleDelete = (customerId) => {
+  const handleDelete = (leadId) => {
     setLoading(true);
-    fetch(`${BASE_URL}/${customerId}`, {
+    fetch(`${BASE_URL}/${leadId}`, {
       method: 'DELETE'
     })
       .then(response => response.json())
       .then(data => {
         if (data.deleted) {
-          fetchCustomers();
+          fetchLeads();
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleEdit = (customer) => {
-    setSelectedCustomer(customer);
+  const handleEdit = (lead) => {
+    setSelectedLead(lead);
   };
 
-  const handleUpdate = (updatedCustomer) => {
+  const handleUpdate = (updatedLead) => {
     setLoading(true);
-    fetch(`${BASE_URL}/${updatedCustomer.id}`, {
+    fetch(`${BASE_URL}/${updatedLead.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedCustomer),
+      body: JSON.stringify(updatedLead),
     })
       .then(response => response.json())
       .then(data => {
         if (data.id) {
-          fetchCustomers();
-          setSelectedCustomer(null);
+          fetchLeads();
+          setSelectedLead(null);
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleCreate = (newCustomer) => {
+  const handleCreate = (newLead) => {
     setLoading(true);
     fetch(BASE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newCustomer),
+      body: JSON.stringify(newLead),
     })
       .then(response => response.json())
       .then(data => {
         if (data) {
-          fetchCustomers();
+          fetchLeads();
           setShowCreateForm(false);
         }
       })
@@ -107,21 +107,21 @@ const CustomerTable = () => {
   };
 
   const handleCloseForm = () => {
-    setSelectedCustomer(null);
+    setSelectedLead(null);
     setShowCreateForm(false);
   };
 
   return (
     <div className="container">
-      <h2>Customers</h2>
+      <h2>Leads</h2>
       <div className="mb-3">
-        <SearchCustomer
+        <SearchLead
           searchQuery={searchQuery}
           onSearchChange={handleSearchChange}
           onSearch={handleSearch}
         />
         <button className="btn btn-primary" onClick={() => setShowCreateForm(true)}>
-          Create Customer
+          Create Lead
         </button>
       </div>
       {loading ? (
@@ -134,27 +134,27 @@ const CustomerTable = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Address</th>
-              <th>Communication History</th>
-              <th>Purchase History</th>
+              <th>Source</th>
+              <th>Status</th>
+              <th>Notes</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {customers.map(customer => (
-              <tr key={customer.id}>
-                <td>{customer.id}</td>
-                <td>{customer.name}</td>
-                <td>{customer.email}</td>
-                <td>{customer.phone}</td>
-                <td>{customer.address}</td>
-                <td>{customer.communicationHistory.join(', ')}</td>
-                <td>{customer.purchaseHistory.join(', ')}</td>
+            {leads.map(lead => (
+              <tr key={lead.id}>
+                <td>{lead.id}</td>
+                <td>{lead.name}</td>
+                <td>{lead.email}</td>
+                <td>{lead.phone}</td>
+                <td>{lead.source}</td>
+                <td>{lead.status}</td>
+                <td>{lead.notes}</td>
                 <td>
-                  <button className="btn btn-primary btn-sm" onClick={() => handleEdit(customer)}>
+                  <button className="btn btn-primary btn-sm" onClick={() => handleEdit(lead)}>
                     <FontAwesomeIcon icon={faEdit} />
                   </button>
-                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(customer.id)}>
+                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(lead.id)}>
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </td>
@@ -166,17 +166,17 @@ const CustomerTable = () => {
 
       {showCreateForm && (
         <div>
-          <CreateCustomer onCreate={handleCreate} onCancel={handleCloseForm} />
+          <CreateLead onCreate={handleCreate} onCancel={handleCloseForm} />
         </div>
       )}
 
-      {selectedCustomer && (
+      {selectedLead && (
         <div>
-          <UpdateCustomer customer={selectedCustomer} onUpdate={handleUpdate} onCancel={handleCloseForm} />
+          <UpdateLead lead={selectedLead} onUpdate={handleUpdate} onCancel={handleCloseForm} />
         </div>
       )}
     </div>
   );
 };
 
-export default CustomerTable;
+export default LeadTable;

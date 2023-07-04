@@ -1,14 +1,13 @@
 import React from 'react';
-import CustomerTable from './Pages/Customer/CustomerTable';
+import LeadManagement from './Pages/Leads/LeadManagement';
 
 const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Customer Management System</h1>
       </header>
       <main>
-        <CustomerTable />
+        <LeadManagement />
       </main>
     </div>
   );
