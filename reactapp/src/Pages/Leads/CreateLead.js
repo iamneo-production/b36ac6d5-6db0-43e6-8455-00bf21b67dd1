@@ -108,13 +108,17 @@ const CreateLead = ({ onCreate, onCancel }) => {
           <label htmlFor="status" className="form-label">
             Status
           </label>
-          <input
-            type="text"
+          <select
             className="form-control"
             id="status"
             value={status}
             onChange={handleStatusChange}
-          />
+          >
+            <option value="">Select Status</option>
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Passive">Passive</option>
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="notes" className="form-label">

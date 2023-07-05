@@ -5,6 +5,7 @@ import SearchCustomer from './SearchCustomer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './CustomerTable.css';
 
 const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/customers';
 
@@ -12,8 +13,8 @@ const CustomerTable = () => {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showCreateForm, setShowCreateForm] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [isCreating, setIsCreating] = useState(false);
 
   useEffect(() => {
     fetchCustomers();
@@ -47,10 +48,10 @@ const CustomerTable = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleDelete = (customerId) => {
+  const handleDelete = customerId => {
     setLoading(true);
     fetch(`${BASE_URL}/${customerId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
       .then(response => response.json())
       .then(data => {
@@ -62,11 +63,11 @@ const CustomerTable = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleEdit = (customer) => {
+  const handleEdit = customer => {
     setSelectedCustomer(customer);
   };
 
-  const handleUpdate = (updatedCustomer) => {
+  const handleUpdate = updatedCustomer => {
     setLoading(true);
     fetch(`${BASE_URL}/${updatedCustomer.id}`, {
       method: 'PUT',
@@ -86,7 +87,7 @@ const CustomerTable = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleCreate = (newCustomer) => {
+  const handleCreate = newCustomer => {
     setLoading(true);
     fetch(BASE_URL, {
       method: 'POST',
@@ -99,7 +100,7 @@ const CustomerTable = () => {
       .then(data => {
         if (data) {
           fetchCustomers();
-          setShowCreateForm(false);
+          setIsCreating(false);
         }
       })
       .catch(error => console.error(error))
@@ -108,19 +109,19 @@ const CustomerTable = () => {
 
   const handleCloseForm = () => {
     setSelectedCustomer(null);
-    setShowCreateForm(false);
+    setIsCreating(false);
+  };
+
+  const handleShowCreateForm = () => {
+    setIsCreating(true);
   };
 
   return (
     <div className="container">
       <h2>Customers</h2>
       <div className="mb-3">
-        <SearchCustomer
-          searchQuery={searchQuery}
-          onSearchChange={handleSearchChange}
-          onSearch={handleSearch}
-        />
-        <button className="btn btn-primary" onClick={() => setShowCreateForm(true)}>
+        <SearchCustomer searchQuery={searchQuery} onSearchChange={handleSearchChange} onSearch={handleSearch} />
+        <button className="btn btn-primary" onClick={handleShowCreateForm}>
           Create Customer
         </button>
       </div>
@@ -164,14 +165,14 @@ const CustomerTable = () => {
         </table>
       )}
 
-      {showCreateForm && (
-        <div>
+      {isCreating && (
+        <div className="popup-form">
           <CreateCustomer onCreate={handleCreate} onCancel={handleCloseForm} />
         </div>
       )}
 
       {selectedCustomer && (
-        <div>
+        <div className="popup-form">
           <UpdateCustomer customer={selectedCustomer} onUpdate={handleUpdate} onCancel={handleCloseForm} />
         </div>
       )}

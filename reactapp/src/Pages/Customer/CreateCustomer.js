@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './CreateCustomer.css';
 
+
 const CreateCustomer = ({ onCreate, onCancel }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

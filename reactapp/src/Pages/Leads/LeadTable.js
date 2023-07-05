@@ -5,6 +5,7 @@ import SearchLead from './SearchLead';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './LeadTable.css';
 
 const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/lead';
 
@@ -47,10 +48,10 @@ const LeadTable = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleDelete = (leadId) => {
+  const handleDelete = leadId => {
     setLoading(true);
     fetch(`${BASE_URL}/${leadId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
       .then(response => response.json())
       .then(data => {
@@ -62,11 +63,11 @@ const LeadTable = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleEdit = (lead) => {
+  const handleEdit = lead => {
     setSelectedLead(lead);
   };
 
-  const handleUpdate = (updatedLead) => {
+  const handleUpdate = updatedLead => {
     setLoading(true);
     fetch(`${BASE_URL}/${updatedLead.id}`, {
       method: 'PUT',
@@ -86,7 +87,7 @@ const LeadTable = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleCreate = (newLead) => {
+  const handleCreate = newLead => {
     setLoading(true);
     fetch(BASE_URL, {
       method: 'POST',
@@ -165,13 +166,13 @@ const LeadTable = () => {
       )}
 
       {showCreateForm && (
-        <div>
+        <div className="popup-form">
           <CreateLead onCreate={handleCreate} onCancel={handleCloseForm} />
         </div>
       )}
 
       {selectedLead && (
-        <div>
+        <div className="popup-form">
           <UpdateLead lead={selectedLead} onUpdate={handleUpdate} onCancel={handleCloseForm} />
         </div>
       )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import LeadManagement from './Pages/Leads/LeadManagement';
+import CustomerManagement from './Pages/Customer/CustomerManagement';
 
 const App = () => {
   return (
@@ -7,7 +7,7 @@ const App = () => {
       <header className="App-header">
       </header>
       <main>
-        <LeadManagement />
+        <CustomerManagement />
       </main>
     </div>
   );
