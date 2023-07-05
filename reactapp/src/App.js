@@ -8,14 +8,6 @@ import CustomerTable from "./Pages/Customer/CustomerTable";
 
 const App = () => {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //   </header>
-    //   <main>
-    //   <Navbar style={{marignLeft:'50px'}}/>
-    //     <LeadManagement />
-    //   </main>
-    // </div>
     <div>
       <BrowserRouter>
       <Navbar style={{marignLeft:'50px'}}/>
