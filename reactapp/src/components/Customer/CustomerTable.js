@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import CreateCustomer from './CreateCustomer';
 import UpdateCustomer from './UpdateCustomer';
-import SearchCustomer from './SearchCustomer'; // Add this import statement
-import "./CustomerTable.css"
+import SearchCustomer from './SearchCustomer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './CustomerTable.css';
 
 const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/customers';
 
@@ -10,8 +13,8 @@ const CustomerTable = () => {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showCreateForm, setShowCreateForm] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [isCreating, setIsCreating] = useState(false);
 
   useEffect(() => {
     fetchCustomers();
@@ -45,26 +48,26 @@ const CustomerTable = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleDelete = (customerId) => {
+  const handleDelete = customerId => {
     setLoading(true);
     fetch(`${BASE_URL}/${customerId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
       .then(response => response.json())
       .then(data => {
         if (data.deleted) {
-          fetchCustomers(); // Refresh the customer list
+          fetchCustomers();
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleEdit = (customer) => {
+  const handleEdit = customer => {
     setSelectedCustomer(customer);
   };
 
-  const handleUpdate = (updatedCustomer) => {
+  const handleUpdate = updatedCustomer => {
     setLoading(true);
     fetch(`${BASE_URL}/${updatedCustomer.id}`, {
       method: 'PUT',
@@ -76,7 +79,7 @@ const CustomerTable = () => {
       .then(response => response.json())
       .then(data => {
         if (data.id) {
-          fetchCustomers(); // Refresh the customer list
+          fetchCustomers();
           setSelectedCustomer(null);
         }
       })
@@ -84,7 +87,7 @@ const CustomerTable = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleCreate = (newCustomer) => {
+  const handleCreate = newCustomer => {
     setLoading(true);
     fetch(BASE_URL, {
       method: 'POST',
@@ -96,8 +99,8 @@ const CustomerTable = () => {
       .then(response => response.json())
       .then(data => {
         if (data) {
-          fetchCustomers(); // Refresh the customer list
-          setShowCreateForm(false);
+          fetchCustomers();
+          setIsCreating(false);
         }
       })
       .catch(error => console.error(error))
@@ -106,74 +109,71 @@ const CustomerTable = () => {
 
   const handleCloseForm = () => {
     setSelectedCustomer(null);
-    setShowCreateForm(false);
+    setIsCreating(false);
+  };
+
+  const handleShowCreateForm = () => {
+    setIsCreating(true);
   };
 
   return (
-    <div >
-      <h2 style={{textAlign:"center"}}>Customers</h2>
-      <div>
-      <div style={{display:"flex",justifyContent:"flex-end"}}>
-        <SearchCustomer 
-          searchQuery={searchQuery}
-          onSearchChange={handleSearchChange}
-          onSearch={handleSearch}
-        />
-        </div>
-        <div  style={{display:"flex",justifyContent:"flex-end"}}>
-        <button onClick={() => setShowCreateForm(true)} >Create Customer</button>
-        </div>
+    <div className="container">
+      <h2>Customers</h2>
+      <div className="mb-3">
+        <SearchCustomer searchQuery={searchQuery} onSearchChange={handleSearchChange} onSearch={handleSearch} />
+        <button className="btn btn-primary" onClick={handleShowCreateForm}>
+          Create Customer
+        </button>
       </div>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="table-container">
-        <table className="table" align="center">
-          <thead >
+        <table className="table table-striped">
+          <thead>
             <tr>
-              <th className='heading'>ID</th>
-              <th  className='heading'>Name</th>
-              <th  className='heading'>Email</th>
-              <th  className='heading'>Phone</th>
-              <th  className='heading'>Address</th>
-              <th  className='heading'>Communication History</th>
-              <th  className='heading'>Purchase History</th>
-              <th  className='heading'>Actions</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Communication History</th>
+              <th>Purchase History</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {customers.map(customer => (
               <tr key={customer.id}>
-                <td className='heading'>{customer.id}</td>
-                <td className='heading'>{customer.name}</td>
-                <td className='heading'>{customer.email}</td>
-                <td className='heading'>{customer.phone}</td>
-                <td className='heading'>{customer.address}</td>
-                <td className='heading'>{customer.communicationHistory.join(', ')}</td>
-                <td className='heading'>{customer.purchaseHistory.join(', ')}</td>
+                <td>{customer.id}</td>
+                <td>{customer.name}</td>
+                <td>{customer.email}</td>
+                <td>{customer.phone}</td>
+                <td>{customer.address}</td>
+                <td>{customer.communicationHistory.join(', ')}</td>
+                <td>{customer.purchaseHistory.join(', ')}</td>
                 <td>
-                  <button onClick={() => handleEdit(customer)}>Edit</button>
-                  <button onClick={() => handleDelete(customer.id)}>Delete</button>
+                  <button className="btn btn-primary btn-sm" onClick={() => handleEdit(customer)}>
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(customer.id)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
                 </td>
               </tr>
             ))}
-            
           </tbody>
         </table>
-        </div>
       )}
 
-      {showCreateForm && (
-        <div align="center">
-          <CreateCustomer onCreate={handleCreate} />
-          <button onClick={handleCloseForm}>Cancel</button>
+      {isCreating && (
+        <div className="popup-form">
+          <CreateCustomer onCreate={handleCreate} onCancel={handleCloseForm} />
         </div>
       )}
 
       {selectedCustomer && (
-        <div align="center">
-          <UpdateCustomer customer={selectedCustomer} onUpdate={handleUpdate}/>
-          <button onClick={handleCloseForm}>Cancel</button>
+        <div className="popup-form">
+          <UpdateCustomer customer={selectedCustomer} onUpdate={handleUpdate} onCancel={handleCloseForm} />
         </div>
       )}
     </div>

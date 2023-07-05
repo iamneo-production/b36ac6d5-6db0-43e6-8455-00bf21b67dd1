@@ -4,7 +4,7 @@ import CustomerTable from './CustomerTable';
 const CustomerManagement = () => {
   return (
     <div>
-      <h1>Customer Management</h1>
+      <h1 align="center">Customer Management</h1>
       <CustomerTable />
     </div>
   );
