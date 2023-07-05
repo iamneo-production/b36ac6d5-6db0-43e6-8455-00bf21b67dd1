@@ -3,7 +3,7 @@ import CustomerTable from './CustomerTable';
 
 const CustomerManagement = () => {
   return (
-    <div>
+    <div >
       <h1 align="center">Customer Management</h1>
       <CustomerTable />
     </div>

@@ -113,7 +113,7 @@ const LeadTable = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{marginLeft:"200px"}}>
       <h2>Leads</h2>
       <div className="mb-3">
         <SearchLead

@@ -117,7 +117,7 @@ const CustomerTable = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{marginLeft:"200px"}}>
       <h2>Customers</h2>
       <div className="mb-3">
         <SearchCustomer searchQuery={searchQuery} onSearchChange={handleSearchChange} onSearch={handleSearch} />
