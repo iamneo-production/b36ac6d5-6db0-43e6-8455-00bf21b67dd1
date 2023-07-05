@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customers")
+@CrossOrigin()
 public class CustomerController {
 
     @Autowired
@@ -24,7 +25,7 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<Boolean> createCustomer(@RequestBody Customer customer) {
         Customer createdCustomer = customerService.createCustomer(customer);
-        boolean isSuccess = createdCustomer != null; // Check if customer creation was successful
+        boolean isSuccess = createdCustomer != null;
         return ResponseEntity.ok(isSuccess);
     }
 
