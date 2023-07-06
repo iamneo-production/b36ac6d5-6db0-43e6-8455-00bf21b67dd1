@@ -11,6 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin()
 public class CustomerController {
 
     @Autowired
@@ -24,7 +25,7 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<Boolean> createCustomer(@RequestBody Customer customer) {
         Customer createdCustomer = customerService.createCustomer(customer);
-        boolean isSuccess = createdCustomer != null; // Check if customer creation was successful
+        boolean isSuccess = createdCustomer != null;
         return ResponseEntity.ok(isSuccess);
     }
 

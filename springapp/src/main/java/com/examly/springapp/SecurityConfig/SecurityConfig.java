@@ -1,7 +1,6 @@
-package main.java.com.examly.springapp.SecurityConfig;
+package com.examly.springapp.SecurityConfig;
 
 import java.beans.JavaBean;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.context.annotation.Bean;
