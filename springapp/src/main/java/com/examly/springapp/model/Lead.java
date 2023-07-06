@@ -2,11 +2,9 @@ package com.examly.springapp.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Lead")
 public class Lead {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
@@ -18,7 +16,8 @@ public class Lead {
     public Lead() {
     }
 
-    public Lead(String name, String email, String phone, String source, String status, String notes) {
+    public Lead(Long id, String name, String email, String phone, String source, String status, String notes) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;

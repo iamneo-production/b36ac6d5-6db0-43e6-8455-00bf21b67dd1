@@ -7,14 +7,14 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CustomerTable.css';
 
-const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/customers';
+const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/customer';
 
 const CustomerTable = () => {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [isCreating, setIsCreating] = useState(false);
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
   useEffect(() => {
     fetchCustomers();
@@ -100,7 +100,7 @@ const CustomerTable = () => {
       .then(data => {
         if (data) {
           fetchCustomers();
-          setIsCreating(false);
+          setShowCreateForm(false);
         }
       })
       .catch(error => console.error(error))
@@ -109,19 +109,19 @@ const CustomerTable = () => {
 
   const handleCloseForm = () => {
     setSelectedCustomer(null);
-    setIsCreating(false);
-  };
-
-  const handleShowCreateForm = () => {
-    setIsCreating(true);
+    setShowCreateForm(false);
   };
 
   return (
     <div className="container">
       <h2>Customers</h2>
       <div className="mb-3">
-        <SearchCustomer searchQuery={searchQuery} onSearchChange={handleSearchChange} onSearch={handleSearch} />
-        <button className="btn btn-primary" onClick={handleShowCreateForm}>
+        <SearchCustomer 
+          searchQuery={searchQuery} 
+          onSearchChange={handleSearchChange} 
+          onSearch={handleSearch} 
+        />
+        <button className="btn btn-primary" onClick={ () => setShowCreateForm(true)}>
           Create Customer
         </button>
       </div>
@@ -149,8 +149,8 @@ const CustomerTable = () => {
                 <td>{customer.email}</td>
                 <td>{customer.phone}</td>
                 <td>{customer.address}</td>
-                <td>{customer.communicationHistory.join(', ')}</td>
-                <td>{customer.purchaseHistory.join(', ')}</td>
+                <td>{customer.communicationHistory ? customer.communicationHistory.join(', ') : ''}</td>
+                <td>{customer.purchaseHistory ? customer.purchaseHistory.join(', ') : ''}</td>
                 <td>
                   <button className="btn btn-primary btn-sm" onClick={() => handleEdit(customer)}>
                     <FontAwesomeIcon icon={faEdit} />
@@ -165,7 +165,7 @@ const CustomerTable = () => {
         </table>
       )}
 
-      {isCreating && (
+      {showCreateForm && (
         <div className="popup-form">
           <CreateCustomer onCreate={handleCreate} onCancel={handleCloseForm} />
         </div>
