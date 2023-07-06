@@ -1,4 +1,6 @@
 package com.examly.springapp.controller;
+
+
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.service.CustomerService;
@@ -11,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin()
 public class CustomerController {
 
     @Autowired
@@ -24,7 +27,7 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<Boolean> createCustomer(@RequestBody Customer customer) {
         Customer createdCustomer = customerService.createCustomer(customer);
-        boolean isSuccess = createdCustomer != null;
+        boolean isSuccess = createdCustomer != null; // Check if customer creation was successful
         return ResponseEntity.ok(isSuccess);
     }
 

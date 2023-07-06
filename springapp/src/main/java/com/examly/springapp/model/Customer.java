@@ -19,8 +19,10 @@ public class Customer {
 
     @ElementCollection
     private List<String> purchaseHistory;
+
     public Customer() {
     }
+
     public Customer(String name, String email, String phone, String address,
                     List<String> communicationHistory, List<String> purchaseHistory) {
         this.name = name;
@@ -30,6 +32,7 @@ public class Customer {
         this.communicationHistory = communicationHistory;
         this.purchaseHistory = purchaseHistory;
     }
+
 
     public Long getId() {
         return id;

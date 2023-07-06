@@ -1,11 +1,14 @@
 import React from 'react';
-
+import CustomerManagement from './Pages/Customer/CustomerManagement';
 
 const App = () => {
-
   return (
-    <div>
-        <h1>Reactapp</h1>
+    <div className="App">
+      <header className="App-header">
+      </header>
+      <main>
+        <CustomerManagement />
+      </main>
     </div>
   );
 };

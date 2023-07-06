@@ -6,12 +6,14 @@ public class Lead {
 
     @Id
     private Long id;
+
     private String name;
     private String email;
     private String phone;
     private String source;
     private String status;
     private String notes;
+
 
     public Lead() {
     }
@@ -25,6 +27,7 @@ public class Lead {
         this.status = status;
         this.notes = notes;
     }
+
 
     public Long getId() {
         return id;
@@ -81,5 +84,4 @@ public class Lead {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
 }
