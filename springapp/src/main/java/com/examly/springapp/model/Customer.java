@@ -19,10 +19,6 @@ public class Customer {
 
     @ElementCollection
     private List<String> purchaseHistory;
-<<<<<<< HEAD
-
-=======
->>>>>>> 4e0d0732085323e63102b5364a6ae7b9f09984e2
     public Customer() {
     }
     public Customer(String name, String email, String phone, String address,
@@ -35,10 +31,6 @@ public class Customer {
         this.purchaseHistory = purchaseHistory;
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4e0d0732085323e63102b5364a6ae7b9f09984e2
     public Long getId() {
         return id;
     }

@@ -13,10 +13,6 @@ public class Lead {
     private String status;
     private String notes;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4e0d0732085323e63102b5364a6ae7b9f09984e2
     public Lead() {
     }
 
@@ -30,10 +26,6 @@ public class Lead {
         this.notes = notes;
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4e0d0732085323e63102b5364a6ae7b9f09984e2
     public Long getId() {
         return id;
     }
@@ -89,8 +81,5 @@ public class Lead {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 4e0d0732085323e63102b5364a6ae7b9f09984e2
 }
