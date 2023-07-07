@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/customer")
 @CrossOrigin()
 public class CustomerController {
 
