@@ -1,8 +1,8 @@
 package com.examly.springapp.controller;
 
 import com.examly.springapp.Exception.ResourceNotFoundException;
-import com.examly.springapp.model.Lead;
-import com.examly.springapp.service.LeadService;
+import com.examly.springapp.model.Task;
+import com.examly.springapp.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,22 +13,22 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/lead")
+@RequestMapping("/task")
 @CrossOrigin()
-public class LeadController {
+public class TaskController {
 
     @Autowired
-    private LeadService leadService;
+    private TaskService taskService;
 
     @GetMapping
-    public List<Lead> getAllLeads() {
-        return leadService.getAllLeads();
+    public List<Task> getAllTasks() {
+        return taskService.getAllTasks();
     }
 
     @PostMapping
-    public ResponseEntity<Boolean> createLead(@RequestBody Lead lead) {
-        Lead createdLead = leadService.createLead(lead);
-        if (createdLead != null) {
+    public ResponseEntity<Boolean> createTask(@RequestBody Task task) {
+        Task createdTask = taskService.createTask(task);
+        if (createdTask != null) {
             return ResponseEntity.status(HttpStatus.OK).body(true);
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
@@ -36,24 +36,24 @@ public class LeadController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Lead> getLeadById(@PathVariable(value = "id") Long leadId)
+    public ResponseEntity<Task> getTaskById(@PathVariable(value = "id") Long taskId)
             throws ResourceNotFoundException {
-        Lead lead = leadService.getLeadById(leadId);
-        return ResponseEntity.ok().body(lead);
+        Task task = taskService.getTaskById(taskId);
+        return ResponseEntity.ok().body(task);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Lead> updateLead(
-            @PathVariable(value = "id") Long leadId,
-            @RequestBody Lead leadDetails) throws ResourceNotFoundException {
-        Lead updatedLead = leadService.updateLead(leadId, leadDetails);
-        return ResponseEntity.ok(updatedLead);
+    public ResponseEntity<Task> updateTask(
+            @PathVariable(value = "id") Long taskId,
+            @RequestBody Task taskDetails) throws ResourceNotFoundException {
+        Task updatedTask = taskService.updateTask(taskId, taskDetails);
+        return ResponseEntity.ok(updatedTask);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteLead(@PathVariable(value = "id") Long leadId) {
+    public ResponseEntity<Map<String, Boolean>> deleteTask(@PathVariable(value = "id") Long taskId) {
         try {
-            leadService.deleteLead(leadId);
+            taskService.deleteTask(taskId);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
             return ResponseEntity.ok(response);

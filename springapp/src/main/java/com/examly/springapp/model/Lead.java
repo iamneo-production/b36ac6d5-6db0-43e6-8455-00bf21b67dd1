@@ -2,11 +2,12 @@ package com.examly.springapp.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Lead")
 public class Lead {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String email;
     private String phone;
@@ -14,12 +15,10 @@ public class Lead {
     private String status;
     private String notes;
 
-
     public Lead() {
     }
 
-    public Lead(Long id, String name, String email, String phone, String source, String status, String notes) {
-        this.id = id;
+    public Lead(String name, String email, String phone, String source, String status, String notes) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -27,7 +26,6 @@ public class Lead {
         this.status = status;
         this.notes = notes;
     }
-
 
     public Long getId() {
         return id;
@@ -84,4 +82,5 @@ public class Lead {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
 }
