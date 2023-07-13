@@ -15,8 +15,8 @@ body {
 
 .sidebar {
   width: 200px;
-  background-color: #492d6cff;
-  color: #d9b9ffff;
+  background-color: #1e477eff;
+  color: #d6e3ffff;
   height: 100vh;
   overflow-y: auto;
   transition: width 0.5s ease-in-out;
@@ -25,9 +25,9 @@ body {
 .sidebar .link-text {
   font-weight: bold;
   font-size: 18px;
-  color: #bd9de4ff; 
+  color: #6e91ceff; 
   text-decoration: none; 
-  background-image: linear-gradient(to right, #bd9de4ff, #eedbffff);
+  background-image: linear-gradient(to right, #6e91ceff, #d6e3ffff);
   -webkit-background-clip: text; 
   -webkit-text-fill-color: transparent; 
 }
@@ -98,25 +98,25 @@ body {
 }
 
 .link:hover {
-  border-right: 4px solid #492d6cff;
-  border-left: 4px solid #492d6cff;
-  background: linear-gradient(to right, #bd9de4ff, #492d6cff);
+  border-right: 4px solid #003063ff;
+  border-left: 4px solid #003063ff;
+  background-image: linear-gradient(to right, #003063ff, #003063ff);
   color: #ffffff; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  text-shadow: 1px 1px 2px #d6e3ffff;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .active {
-  border-right: 4px solid #492d6cff;
-  border-left: 4px solid #492d6cff;
-  background: #d9b9ffff;
-  background-image: linear-gradient(to right, #bd9de4ff, #492d6cff);
+  border-right: 4px solid #003063ff;
+  border-left: 4px solid #003063ff;
+  background: #5478b2ff;
+  background-image: linear-gradient(to right, #003063ff, #003063ff);
   text-decoration: none;
 }
 
 .active .link-text {
   font-weight: bold;
-  color: #492d6cff;
+  color: #003063ff;
 }
 
 .link-text {
@@ -127,5 +127,5 @@ body {
 main {
   width: 100%;
   padding: 20px;
-  background-color: #d9b9ffff;
+  background-color: #d6e3ffff;
 }
