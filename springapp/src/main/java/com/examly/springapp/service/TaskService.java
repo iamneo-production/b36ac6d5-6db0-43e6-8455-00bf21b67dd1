@@ -1,23 +1,21 @@
 package com.examly.springapp.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Task;
 
+import java.util.List;
+
 public interface TaskService {
-	
-    
-    public List < Task > getAllTasks() ;
-   
-   
-    public Task createTask(Task task) ;
-    
-    
-    public  Task updateTask(Task task);
-      
-   
-    public void deleteTask(Task task);
-    
-    public Optional<Task> findById(Long taskId);
+
+    List<Task> getAllTasks();
+
+    Task getTaskById(Long taskId) throws ResourceNotFoundException;
+
+    Task createTask(Task task);
+
+    Task updateTask(Long taskId, Task taskDetails) throws ResourceNotFoundException;
+
+    void deleteTask(Long taskId) throws ResourceNotFoundException;
+
+    void deleteAllTasks();
 }

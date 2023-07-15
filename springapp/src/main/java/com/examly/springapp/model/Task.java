@@ -1,107 +1,105 @@
 package com.examly.springapp.model;
+
 import javax.persistence.*;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "Task")
 public class Task {
-    
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id")
-  private Long id;
 
-  @Column(name = "task_name")
-  private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "task_description")
-  private String description;
+    private String name;
 
-  @Column(name = "task_assigned_to")
-  private String assignedTo;
+    private String description;
 
-  @Column(name = "task_due_date")
-  private LocalDate dueDate;
+    private String assignedTo;
 
-  @Column(name = "task_completed_at")
-  private LocalDateTime completedAt;
+    private LocalDate dueDate;
 
-  @Column(name = "task_created_at")
-  private LocalDateTime createdAt;
+    private LocalDateTime completedAt;
 
-  @Column(name = "task_updated_at")
-  private LocalDateTime updatedAt;
+    private LocalDateTime createdAt;
 
-  public Task() {
-    super();
-  }
+    private LocalDateTime updatedAt;
 
-  public Long getId() {
-    return id;
-  }
+    public Task() {
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public Task(String name, String description, String assignedTo, LocalDate dueDate,LocalDateTime completedAt,LocalDateTime createdAt,LocalDateTime updatedAt) {
+        this.name = name;
+        this.description = description;
+        this.assignedTo = assignedTo;
+        this.dueDate = dueDate;
+        this.completedAt=completedAt;
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public String getDescription() {
-    return description;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getAssignedTo() {
-    return assignedTo;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public void setAssignedTo(String assignedTo) {
-    this.assignedTo = assignedTo;
-  }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-  public LocalDate getDueDate() {
-    return dueDate;
-  }
+    public String getAssignedTo() {
+        return assignedTo;
+    }
 
-  public void setDueDate(LocalDate dueDate) {
-    this.dueDate = dueDate;
-  }
+    public void setAssignedTo(String assignedTo) {
+        this.assignedTo = assignedTo;
+    }
 
-  public LocalDateTime getCompletedAt() {
-    return completedAt;
-  }
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
 
-  public void setCompletedAt(LocalDateTime completedAt) {
-    this.completedAt = completedAt;
-  }
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
 
-  public LocalDateTime getCreatedAt() {
-    return createdAt;
-  }
+    public LocalDateTime getCompletedAt() {
+        return completedAt;
+    }
 
-  public void setCreatedAt(LocalDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
+    public void setCompletedAt(LocalDateTime completedAt) {
+        this.completedAt = completedAt;
+    }
 
-  public LocalDateTime getUpdatedAt() {
-    return updatedAt;
-  }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-  public void setUpdatedAt(LocalDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

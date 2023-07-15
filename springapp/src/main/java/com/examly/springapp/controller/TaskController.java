@@ -1,66 +1,64 @@
 package com.examly.springapp.controller;
 
+import com.examly.springapp.Exception.ResourceNotFoundException;
+import com.examly.springapp.model.Task;
+import com.examly.springapp.service.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import com.examly.springapp.Exception.ResourceNotFoundException;
-import com.examly.springapp.model.Task;
-import com.examly.springapp.service.TaskService;
-
 @RestController
+@RequestMapping("/task")
+@CrossOrigin()
 public class TaskController {
-	
-		@Autowired
-		private TaskService taskService;
-	 	
 
-	    @GetMapping("/tasks")
-	    public List < Task > getAllTasks() {
-	        return taskService.getAllTasks();
-	    }
-	    
-	    
-	    @PostMapping("/tasks")
-	    public Task createTask( @RequestBody Task task) {
-	        return taskService.createTask(task);
-	    }
-	    
-	    @PutMapping("/tasks/{id}")
-	    public ResponseEntity < Task > updateTask(@PathVariable(value = "id") Long taskId,
-	         @RequestBody Task tasksDetails) throws ResourceNotFoundException {
-	    	Task task = taskService.findById(taskId)
-	            .orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + taskId));
+    @Autowired
+    private TaskService taskService;
 
-	    	task.setName(tasksDetails.getName());
-	    	task.setDescription(tasksDetails.getDescription());
-	    	task.setAssignedTo(tasksDetails.getAssignedTo());
-	    	task.setDueDate(tasksDetails.getDueDate());
-	    	task.setCompletedAt(tasksDetails.getCompletedAt());
-	    	task.setCreatedAt(tasksDetails.getCreatedAt());
-	    	task.setUpdatedAt(tasksDetails.getUpdatedAt());
-	        final Task updatedTask = taskService.updateTask(task);
-	        return ResponseEntity.ok(updatedTask);
-	    }
+    @GetMapping
+    public List<Task> getAllTasks() {
+        return taskService.getAllTasks();
+    }
 
-	    @DeleteMapping("/tasks/{id}")
-	    public Map < String, Boolean > deleteTask(@PathVariable(value = "id") Long taskId)
-	    throws ResourceNotFoundException {
-	    	Task task = taskService.findById(taskId)
-	            .orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + taskId));
+    @PostMapping
+    public ResponseEntity<Boolean> createTask(@RequestBody Task task) {
+        Task createdTask = taskService.createTask(task);
+        if (createdTask != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(true);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
+        }
+    }
 
-	    	taskService.deleteTask(task);
-	        Map < String, Boolean > response = new HashMap < > ();
-	        response.put("deleted", Boolean.TRUE);
-	        return response;
-	    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Task> getTaskById(@PathVariable(value = "id") Long taskId)
+            throws ResourceNotFoundException {
+        Task task = taskService.getTaskById(taskId);
+        return ResponseEntity.ok().body(task);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> updateTask(
+            @PathVariable(value = "id") Long taskId,
+            @RequestBody Task taskDetails) throws ResourceNotFoundException {
+        Task updatedTask = taskService.updateTask(taskId, taskDetails);
+        return ResponseEntity.ok(updatedTask);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteTask(@PathVariable(value = "id") Long taskId) {
+        try {
+            taskService.deleteTask(taskId);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
+            return ResponseEntity.ok(response);
+        } catch (ResourceNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.OK).body(new HashMap<>());
+        }
+    }
 }
