@@ -1,6 +1,7 @@
 import React from 'react';
 import LeadManagement from './Pages/Lead/LeadManagement';
-import Navbar from "./components/Navbar";
+import SideBar from './components/Sidebar';
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CustomerTable from "./Pages/Customer/CustomerTable";
 import TaskManagement from "./Pages/Task/TaskManagement";
@@ -10,21 +11,15 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-      <Navbar style={{marignLeft:'50px'}}/>
-      <Routes>
-        <Route path="customers">
-              <Route index element={<CustomerTable />}/>
-
-            </Route>
-        <Route path="leads">
-              <Route index element={<LeadManagement />}/>
-
-            </Route>
-        <Route path="Tasks">
-              <Route index element={<TaskManagement />}/>
-
-            </Route>
-      </Routes>
+      
+      <SideBar>
+        <Routes>
+          <Route path="/customer" element={<CustomerTable />} />
+          <Route path="/task" element={<TaskManagement />} />
+          <Route path="/lead" element={<LeadManagement />} />
+          <Route path="*" element={<>Not found</>} />
+        </Routes>
+      </SideBar>
       </BrowserRouter>
     </div>
 
