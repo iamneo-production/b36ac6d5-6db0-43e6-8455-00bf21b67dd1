@@ -1,16 +1,28 @@
 package com.examly.springapp.service.impl;
 
+<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
 
+=======
+>>>>>>> ae1b03912297af810ac78091b2c25c372d33ab72
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Task;
 import com.examly.springapp.repository.TaskRepository;
 import com.examly.springapp.service.TaskService;
+<<<<<<< HEAD
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+>>>>>>> ae1b03912297af810ac78091b2c25c372d33ab72
 @Service
 public class TaskServiceImpl implements TaskService {
 
