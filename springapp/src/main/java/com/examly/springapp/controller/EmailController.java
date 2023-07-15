@@ -10,6 +10,7 @@ import javax.mail.MessagingException;
 
 @RestController
 @RequestMapping("/email")
+@CrossOrigin()
 public class EmailController {
 
     private final EmailSenderService emailSenderService;
