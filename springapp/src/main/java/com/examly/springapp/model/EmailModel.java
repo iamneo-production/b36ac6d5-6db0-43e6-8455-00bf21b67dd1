@@ -1,5 +1,4 @@
 package com.examly.springapp.model;
-
 public class EmailModel {
     private String toEmail;
     private String body;

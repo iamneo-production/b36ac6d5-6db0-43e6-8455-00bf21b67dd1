@@ -1,5 +1,4 @@
 package com.examly.springapp.controller;
-
 import com.examly.springapp.service.EmailSenderService;
 import com.examly.springapp.model.EmailModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +13,10 @@ import javax.mail.MessagingException;
 public class EmailController {
 
     private final EmailSenderService emailSenderService;
-
     @Autowired
     public EmailController(EmailSenderService emailSenderService) {
         this.emailSenderService = emailSenderService;
     }
-
     @PostMapping("/send-email")
     public void sendEmail(@RequestBody EmailModel emailModel) {
         try {
@@ -37,7 +34,6 @@ public class EmailController {
             System.out.println("Error sending email: " + e.getMessage());
         }
     }
-
     private void sendSimpleEmail(EmailModel emailModel) throws MessagingException {
         emailSenderService.sendSimpleEmail(
                 emailModel.getToEmail(),
@@ -45,7 +41,6 @@ public class EmailController {
                 emailModel.getSubject()
         );
     }
-
     private void sendEmailWithAttachment(EmailModel emailModel) throws MessagingException {
         emailSenderService.sendEmailWithAttachment(
                 emailModel.getToEmail(),
