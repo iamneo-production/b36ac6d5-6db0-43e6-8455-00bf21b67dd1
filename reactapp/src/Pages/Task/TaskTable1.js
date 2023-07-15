@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import CreateLead from './CreateLead';
-import UpdateLead from './UpdateLead';
-import SearchLead from './SearchLead';
+import CreateTask from './CreateTask';
+import UpdateTask from './UpdateTask';
+import SearchTask from './SearchTask';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './LeadTable.css';
+import './TaskTable1.css';
 
-const BASE_URL = 'https://8080-eccdafbbfbabafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/lead';
+const BASE_URL = 'https://8080-eccdafbbfbabafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/task';
 
-const LeadTable = () => {
-  const [leads, setLeads] = useState([]);
+const TaskTable = () => {
+  const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const [selectedLead, setSelectedLead] = useState(null);
+  const [selectedTask, setSelectedTask] = useState(null);
 
   useEffect(() => {
-    fetchLeads();
+    fetchTasks();
   }, []);
 
-  const fetchLeads = () => {
+  const fetchTasks = () => {
     setLoading(true);
     fetch(BASE_URL)
       .then(response => response.json())
-      .then(data => setLeads(data))
+      .then(data => setTasks(data))
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
@@ -39,67 +39,67 @@ const LeadTable = () => {
       .then(response => response.json())
       .then(data => {
         if (data) {
-          setLeads([data]);
+          setTasks([data]);
         } else {
-          setLeads([]);
+          setTasks([]);
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleDelete = leadId => {
+  const handleDelete = taskId => {
     setLoading(true);
-    fetch(`${BASE_URL}/${leadId}`, {
+    fetch(`${BASE_URL}/${taskId}`, {
       method: 'DELETE',
     })
       .then(response => response.json())
       .then(data => {
         if (data.deleted) {
-          fetchLeads();
+          fetchTasks();
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleEdit = lead => {
-    setSelectedLead(lead);
+  const handleEdit = task => {
+    setSelectedTask(task);
   };
 
-  const handleUpdate = updatedLead => {
+  const handleUpdate = updatedTask => {
     setLoading(true);
-    fetch(`${BASE_URL}/${updatedLead.id}`, {
+    fetch(`${BASE_URL}/${updatedTask.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedLead),
+      body: JSON.stringify(updatedTask),
     })
       .then(response => response.json())
       .then(data => {
         if (data.id) {
-          fetchLeads();
-          setSelectedLead(null);
+          fetchTasks();
+          setSelectedTask(null);
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleCreate = newLead => {
+  const handleCreate = newTask => {
     setLoading(true);
     fetch(BASE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newLead),
+      body: JSON.stringify(newTask),
     })
       .then(response => response.json())
       .then(data => {
         if (data) {
-          fetchLeads();
+          fetchTasks();
           setShowCreateForm(false);
         }
       })
@@ -108,21 +108,21 @@ const LeadTable = () => {
   };
 
   const handleCloseForm = () => {
-    setSelectedLead(null);
+    setSelectedTask(null);
     setShowCreateForm(false);
   };
 
   return (
-    <div className="container" >
-      <h2>Leads</h2>
+    <div className="container">
+      <h2>Tasks</h2>
       <div className="mb-3">
-        <SearchLead
+        <SearchTask
           searchQuery={searchQuery}
           onSearchChange={handleSearchChange}
           onSearch={handleSearch}
         />
         <button className="btn btn-primary" onClick={() => setShowCreateForm(true)}>
-          Create Lead
+          Create Task
         </button>
       </div>
       {loading ? (
@@ -133,29 +133,31 @@ const LeadTable = () => {
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Source</th>
-              <th>Status</th>
-              <th>Notes</th>
+              <th>Description</th>
+              <th>Assigned To</th>
+              <th>Due Date</th>
+              <th>Completed At</th>
+              <th>Created At</th>
+              <th>Updated At</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {leads.map(lead => (
-              <tr key={lead.id}>
-                <td>{lead.id}</td>
-                <td>{lead.name}</td>
-                <td>{lead.email}</td>
-                <td>{lead.phone}</td>
-                <td>{lead.source}</td>
-                <td>{lead.status}</td>
-                <td>{lead.notes}</td>
+            {tasks.map(task => (
+              <tr key={task.id}>
+                <td>{task.id}</td>
+                <td>{task.name}</td>
+                <td>{task.description}</td>
+                <td>{task.assignedTo}</td>
+                <td>{task.dueDate}</td>
+                <td>{task.completedAt}</td>
+                <td>{task.createdAt}</td>
+                <td>{task.updatedAt}</td>
                 <td>
-                  <button className="btn btn-primary btn-sm" onClick={() => handleEdit(lead)}>
+                  <button className="btn btn-primary btn-sm" onClick={() => handleEdit(task)}>
                     <FontAwesomeIcon icon={faEdit} />
                   </button>
-                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(lead.id)}>
+                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(task.id)}>
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </td>
@@ -167,17 +169,17 @@ const LeadTable = () => {
 
       {showCreateForm && (
         <div className="popup-form">
-          <CreateLead onCreate={handleCreate} onCancel={handleCloseForm} />
+          <CreateTask onCreate={handleCreate} onCancel={handleCloseForm} />
         </div>
       )}
 
-      {selectedLead && (
+      {selectedTask && (
         <div className="popup-form">
-          <UpdateLead lead={selectedLead} onUpdate={handleUpdate} onCancel={handleCloseForm} />
+          <UpdateTask task={selectedTask} onUpdate={handleUpdate} onCancel={handleCloseForm} />
         </div>
       )}
     </div>
   );
 };
 
-export default LeadTable;
+export default TaskTable;
