@@ -7,14 +7,16 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CustomerTable.css';
 
-const BASE_URL = 'https://8080-eccdafbbfbabafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/customers';
+
+const BASE_URL = 'https://8080-eccdafbbfbabafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/customer';
+
 
 const CustomerTable = () => {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [isCreating, setIsCreating] = useState(false);
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
   useEffect(() => {
     fetchCustomers();
@@ -100,7 +102,7 @@ const CustomerTable = () => {
       .then(data => {
         if (data) {
           fetchCustomers();
-          setIsCreating(false);
+          setShowCreateForm(false);
         }
       })
       .catch(error => console.error(error))
@@ -109,63 +111,73 @@ const CustomerTable = () => {
 
   const handleCloseForm = () => {
     setSelectedCustomer(null);
-    setIsCreating(false);
-  };
-
-  const handleShowCreateForm = () => {
-    setIsCreating(true);
+    setShowCreateForm(false);
   };
 
   return (
     <div className="container" >
       <h2>Customers</h2>
       <div className="mb-3">
-        <SearchCustomer searchQuery={searchQuery} onSearchChange={handleSearchChange} onSearch={handleSearch} />
-        <button className="btn btn-primary" onClick={handleShowCreateForm}>
+        <SearchCustomer
+          searchQuery={searchQuery}
+          onSearchChange={handleSearchChange}
+          onSearch={handleSearch}
+        />
+        <button className="btn btn-primary" onClick={() => setShowCreateForm(true)}>
           Create Customer
         </button>
       </div>
       {loading ? (
-        <div>Loading...</div>
+        <div className="loading">Loading...</div>
       ) : (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Address</th>
-              <th>Communication History</th>
-              <th>Purchase History</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {customers.map(customer => (
-              <tr key={customer.id}>
-                <td>{customer.id}</td>
-                <td>{customer.name}</td>
-                <td>{customer.email}</td>
-                <td>{customer.phone}</td>
-                <td>{customer.address}</td>
-                <td>{customer.communicationHistory.join(', ')}</td>
-                <td>{customer.purchaseHistory.join(', ')}</td>
-                <td>
-                  <button className="btn btn-primary btn-sm" onClick={() => handleEdit(customer)}>
-                    <FontAwesomeIcon icon={faEdit} />
-                  </button>
-                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(customer.id)}>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
+        <div className="table-container">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Communication History</th>
+                <th>Purchase History</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {customers.map(customer => (
+                <tr key={customer.id}>
+                  <td>{customer.id}</td>
+                  <td>{customer.name}</td>
+                  <td>{customer.email}</td>
+                  <td>{customer.phone}</td>
+                  <td>{customer.address}</td>
+                  <td>
+                    {customer.communicationHistory ? customer.communicationHistory.join(', ') : ''}
+                  </td>
+                  <td>{customer.purchaseHistory ? customer.purchaseHistory.join(', ') : ''}</td>
+                  <td>
+                    <button
+                      className="btn btn-primary btn-sm"
+                      onClick={() => handleEdit(customer)}
+                    >
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => handleDelete(customer.id)}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
-      {isCreating && (
+      {showCreateForm && (
         <div className="popup-form">
           <CreateCustomer onCreate={handleCreate} onCancel={handleCloseForm} />
         </div>

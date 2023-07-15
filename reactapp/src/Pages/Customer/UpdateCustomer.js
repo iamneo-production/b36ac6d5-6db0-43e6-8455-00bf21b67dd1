@@ -27,7 +27,7 @@ const UpdateCustomer = ({ customer, onUpdate, onCancel }) => {
 
   return (
     <div className="update-customer-container">
-      <h2>Update Customer</h2>
+      <h2>Edit Customer ID: {customer.id}</h2>{/* Displaying the Customer ID */}
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
