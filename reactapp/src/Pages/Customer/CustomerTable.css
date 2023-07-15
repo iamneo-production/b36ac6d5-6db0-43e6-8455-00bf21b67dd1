@@ -13,6 +13,28 @@ h2 {
   margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
+=======
+.search-input {
+  width: 200px;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  margin-left: 10px;
+}
+
+>>>>>>> dc22c202cb6a343ac4970f5c1b0f521e5002bf34
 .popup-form {
   position: fixed;
   top: 50%;
@@ -73,10 +95,26 @@ h2 {
   margin-right: 10px;
 }
 
+<<<<<<< HEAD
+=======
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  max-height: 400px;
+}
+
+>>>>>>> dc22c202cb6a343ac4970f5c1b0f521e5002bf34
 .table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+<<<<<<< HEAD
+=======
+  background-color: #fff;
+  border-radius: 4px;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+>>>>>>> dc22c202cb6a343ac4970f5c1b0f521e5002bf34
 }
 
 .table th,
@@ -85,11 +123,38 @@ h2 {
   text-align: left;
   border: 1px solid #fff;
   position: relative;
+<<<<<<< HEAD
   background-color: #fff;
+=======
+>>>>>>> dc22c202cb6a343ac4970f5c1b0f521e5002bf34
 }
 
 .table th {
   font-weight: bold;
+<<<<<<< HEAD
+=======
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.table th:first-child {
+  border-top-left-radius: 4px;
+}
+
+.table th:last-child {
+  border-top-right-radius: 4px;
+  border-right: none;
+}
+
+.table td {
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.table td:last-child {
+  border-right: none;
+>>>>>>> dc22c202cb6a343ac4970f5c1b0f521e5002bf34
 }
 
 .table th:before,
@@ -104,11 +169,18 @@ h2 {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dc22c202cb6a343ac4970f5c1b0f521e5002bf34
 .loading {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
   font-weight: bold;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dc22c202cb6a343ac4970f5c1b0f521e5002bf34
