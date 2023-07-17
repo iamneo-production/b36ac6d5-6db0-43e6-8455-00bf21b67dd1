@@ -1,17 +1,17 @@
 import React from 'react';
 
-const SearchCustomer = ({ searchQuery, onSearchChange, onSearch }) => {
+const SearchTask = ({ searchQuery, onSearchChange, onSearch }) => {
   return (
     <div>
       <input
         type="text"
         value={searchQuery}
         onChange={onSearchChange}
-        placeholder="Search customer by ID..."
+        placeholder="Search task by ID..."
       />
       <button onClick={onSearch}>Search</button>
     </div>
   );
 };
 
-export default SearchCustomer;
+export default SearchTask;

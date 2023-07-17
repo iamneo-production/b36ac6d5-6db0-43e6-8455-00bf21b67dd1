@@ -1,5 +1,4 @@
 package com.examly.springapp.model;
-
 import javax.persistence.*;
 import java.util.List;
 

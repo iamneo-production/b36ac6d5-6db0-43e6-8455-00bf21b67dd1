@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import LeadManagement from './Pages/Lead/LeadManagement';
 import Navbar from "./components/Navbar";
@@ -24,7 +25,28 @@ const App = () => {
       </BrowserRouter>
     </div>
 
+=======
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SideBar from "./components/Sidebar";
+import LeadManagement from "./Pages/Lead/LeadManagement";
+import TaskManagement from "./Pages/Task/TaskManagement";
+import CustomerManagement from "./Pages/Customer/CustomerManagement";
+
+function App() {
+  return (
+    <Router>
+      <SideBar>
+        <Routes>
+          <Route path="/customer" element={<CustomerManagement />} />
+          <Route path="/task" element={<TaskManagement />} />
+          <Route path="/lead" element={<LeadManagement />} />
+        </Routes>
+      </SideBar>
+    </Router>
+>>>>>>> af37fb4ba5e22131cdfe567e92a26ffa22de54c1
   );
-};
+}
 
 export default App;
