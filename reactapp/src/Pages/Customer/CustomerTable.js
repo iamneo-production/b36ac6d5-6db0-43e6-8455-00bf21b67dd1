@@ -7,11 +7,7 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CustomerTable.css';
 
-<<<<<<< HEAD
 const BASE_URL = 'https://8080-eccdafbbfbabafcfcbeaefdbdfafedfbadebae.project.examly.io/customer';
-=======
-const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfafedfbadebae.project.examly.io/customer';
->>>>>>> af37fb4ba5e22131cdfe567e92a26ffa22de54c1
 
 const CustomerTable = () => {
   const [customers, setCustomers] = useState([]);
