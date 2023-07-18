@@ -1,39 +1,26 @@
-<<<<<<< HEAD
-com/examly/springapp/service/impl/CustomerServiceImpl.class
-com/examly/springapp/model/EmailModel.class
-com/examly/springapp/repository/TaskRepository.class
-=======
 com/examly/springapp/controller/OpportunityController.class
 com/examly/springapp/repository/OpportunityRepository.class
->>>>>>> af37fb4ba5e22131cdfe567e92a26ffa22de54c1
 com/examly/springapp/service/EmailSenderService.class
-com/examly/springapp/SpringappApplication.class
 com/examly/springapp/service/impl/OpportunityServiceImpl.class
+com/examly/springapp/SpringappApplication.class
 com/examly/springapp/model/Task.class
-<<<<<<< HEAD
+com/examly/springapp/repository/SaleRepository.class
 com/examly/springapp/service/LeadService.class
 com/examly/springapp/repository/LeadRepository.class
+com/examly/springapp/service/SaleService.class
+com/examly/springapp/model/Opportunity.class
 com/examly/springapp/controller/TaskController.class
 com/examly/springapp/service/impl/LeadServiceImpl.class
-com/examly/springapp/repository/CustomerRepository.class
-=======
-com/examly/springapp/repository/SaleRepository.class
-com/examly/springapp/repository/LeadRepository.class
-com/examly/springapp/service/LeadService.class
-com/examly/springapp/service/SaleService.class
-com/examly/springapp/controller/TaskController.class
-com/examly/springapp/model/Opportunity.class
->>>>>>> af37fb4ba5e22131cdfe567e92a26ffa22de54c1
 com/examly/springapp/controller/EmailController.class
-com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/service/impl/SaleServiceImpl.class
+com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/model/Customer.class
 com/examly/springapp/controller/LeadController.class
 com/examly/springapp/Exception/ResourceNotFoundException.class
 com/examly/springapp/service/impl/TaskServiceImpl.class
-com/examly/springapp/repository/TaskRepository.class
 com/examly/springapp/service/impl/CustomerServiceImpl.class
 com/examly/springapp/model/EmailModel.class
+com/examly/springapp/repository/TaskRepository.class
 com/examly/springapp/service/OpportunityService.class
 com/examly/springapp/model/Sale.class
 com/examly/springapp/repository/CustomerRepository.class
