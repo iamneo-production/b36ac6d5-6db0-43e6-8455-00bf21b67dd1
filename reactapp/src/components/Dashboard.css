@@ -1,0 +1,123 @@
+/* Dashboard.css */
+
+.dashboard-container {
+    justify-content: space-between; /* Add space between the divs */
+    padding: 20px;
+  }
+  
+  .navigations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+.line-chart-container {
+  width: 700px;
+  margin-left: auto;
+}
+
+/* Additional CSS to make the line chart fill the container horizontally */
+.recharts-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+/* Add this style to ensure the chart stays on the side even during scrolling */
+
+  
+  .line-chart-container {
+    background-color: white;
+    flex: 1; /* Add flex to take remaining available space */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .dashboard-tile {
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .dashboard-tile:hover {
+    background-color: #1e477eff;
+    color:white;
+    transform: translateY(-5px);
+  }
+  
+  .dashboard-tile-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-tile-value {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .dashboard-tile-icon {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  
+  .recharts-wrapper {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  
+  .navigations a {
+    text-decoration: none;
+    color: inherit;
+  }
+ /* Dashboard.css */
+
+
+/* Styles for Progress Bar */
+.progress-bar-container {
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  margin-top: 30px;
+  gap:20px;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-bar-label {
+  width: 240px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.progress-bar-wrapper {
+  flex: 1;
+  height: 20px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #6e91ceff;
+}
+
+.progress-bar-value {
+  font-size: 24px;
+  margin-left: 10px;
+  font-weight: bold;
+}
