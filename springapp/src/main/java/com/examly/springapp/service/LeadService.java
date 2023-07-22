@@ -2,6 +2,7 @@ package com.examly.springapp.service;
 
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Lead;
+
 import java.util.List;
 
 public interface LeadService {

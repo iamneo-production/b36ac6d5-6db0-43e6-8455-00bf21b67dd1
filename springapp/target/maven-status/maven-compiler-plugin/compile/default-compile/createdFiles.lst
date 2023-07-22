@@ -1,12 +1,114 @@
+<<<<<<< HEAD
 com/examly/springapp/service/impl/CustomerServiceImpl.class
+=======
+<<<<<<< HEAD
+=======
+com/examly/springapp/controller/OpportunityController.class
+com/examly/springapp/repository/OpportunityRepository.class
+com/examly/springapp/service/EmailSenderService.class
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+com/examly/springapp/SpringappApplication.class
+com/examly/springapp/model/Task.class
+com/examly/springapp/service/impl/OpportunityServiceImpl.class
+com/examly/springapp/repository/SaleRepository.class
+com/examly/springapp/repository/LeadRepository.class
+com/examly/springapp/service/LeadService.class
+com/examly/springapp/service/SaleService.class
+=======
+>>>>>>> a0a4cdd38c1ab2688dea1ae6c3b3ae31c4f83fa2
+com/examly/springapp/service/impl/OpportunityServiceImpl.class
+>>>>>>> a48dbffe3660376a2b0315de09607b7ea4d5aaa2
 com/examly/springapp/SpringappApplication.class
 com/examly/springapp/service/LeadService.class
 com/examly/springapp/repository/LeadRepository.class
+<<<<<<< HEAD
 com/examly/springapp/service/impl/LeadServiceImpl.class
 com/examly/springapp/repository/CustomerRepository.class
+=======
+com/examly/springapp/service/SaleService.class
+<<<<<<< HEAD
+com/examly/springapp/model/Opportunity.class
+com/examly/springapp/controller/TaskController.class
+com/examly/springapp/service/impl/LeadServiceImpl.class
+com/examly/springapp/controller/EmailController.class
+=======
+com/examly/springapp/model/Ticket.class
+<<<<<<< HEAD
+=======
+>>>>>>> 1fc9c40013690269008a0fd22d1ce5754d1e89a8
+>>>>>>> a0a4cdd38c1ab2688dea1ae6c3b3ae31c4f83fa2
+com/examly/springapp/controller/TaskController.class
+com/examly/springapp/model/Opportunity.class
+com/examly/springapp/controller/EmailController.class
+com/examly/springapp/service/impl/LeadServiceImpl.class
+<<<<<<< HEAD
+com/examly/springapp/repository/TicketRepository.class
+=======
+<<<<<<< HEAD
+=======
+com/examly/springapp/repository/TicketRepository.class
+>>>>>>> 1fc9c40013690269008a0fd22d1ce5754d1e89a8
+>>>>>>> a0a4cdd38c1ab2688dea1ae6c3b3ae31c4f83fa2
+com/examly/springapp/controller/CustomerController.class
+com/examly/springapp/controller/TicketController.class
+>>>>>>> 144eb0f9bd54ea57d316359c37867e51de29e841
+=======
+com/examly/springapp/service/impl/OpportunityServiceImpl.class
+com/examly/springapp/model/Task.class
+com/examly/springapp/SpringappApplication.class
+com/examly/springapp/repository/SaleRepository.class
+com/examly/springapp/service/LeadService.class
+com/examly/springapp/repository/LeadRepository.class
+com/examly/springapp/service/SaleService.class
+com/examly/springapp/controller/TaskController.class
+com/examly/springapp/model/Opportunity.class
+com/examly/springapp/service/impl/LeadServiceImpl.class
+com/examly/springapp/controller/EmailController.class
+>>>>>>> b64ca60831862e6425901acd15d95a6a16050174
+com/examly/springapp/service/impl/SaleServiceImpl.class
+>>>>>>> a48dbffe3660376a2b0315de09607b7ea4d5aaa2
 com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/model/Customer.class
 com/examly/springapp/controller/LeadController.class
 com/examly/springapp/Exception/ResourceNotFoundException.class
+<<<<<<< HEAD
+=======
+com/examly/springapp/service/impl/TaskServiceImpl.class
+<<<<<<< HEAD
+com/examly/springapp/service/impl/CustomerServiceImpl.class
+com/examly/springapp/model/EmailModel.class
+com/examly/springapp/repository/TaskRepository.class
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+com/examly/springapp/repository/TaskRepository.class
+com/examly/springapp/model/EmailModel.class
+com/examly/springapp/service/impl/CustomerServiceImpl.class
+=======
+com/examly/springapp/service/impl/CustomerServiceImpl.class
+com/examly/springapp/model/EmailModel.class
+com/examly/springapp/repository/TaskRepository.class
+>>>>>>> 1fc9c40013690269008a0fd22d1ce5754d1e89a8
+>>>>>>> a0a4cdd38c1ab2688dea1ae6c3b3ae31c4f83fa2
+com/examly/springapp/service/OpportunityService.class
+com/examly/springapp/service/impl/TicketServiceImpl.class
+com/examly/springapp/model/Sale.class
+com/examly/springapp/repository/CustomerRepository.class
+com/examly/springapp/service/TaskService.class
+com/examly/springapp/service/TicketService.class
+=======
+com/examly/springapp/service/impl/CustomerServiceImpl.class
+com/examly/springapp/model/EmailModel.class
+com/examly/springapp/repository/TaskRepository.class
+com/examly/springapp/service/OpportunityService.class
+com/examly/springapp/model/Sale.class
+com/examly/springapp/repository/CustomerRepository.class
+com/examly/springapp/service/TaskService.class
+>>>>>>> b64ca60831862e6425901acd15d95a6a16050174
+com/examly/springapp/controller/SaleController.class
+>>>>>>> a48dbffe3660376a2b0315de09607b7ea4d5aaa2
 com/examly/springapp/model/Lead.class
 com/examly/springapp/service/CustomerService.class
