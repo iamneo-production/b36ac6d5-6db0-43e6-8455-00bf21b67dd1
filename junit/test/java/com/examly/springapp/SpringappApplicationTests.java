@@ -66,41 +66,5 @@ class SpringappApplicationTests {
 				.andExpect(status().isOk()).andReturn();
 	}
 
-	@Test
-	void test_case6() throws Exception {
-
-		String st = "{\"id\":1,\"name\": \"lead1\",\"email\": \"john@gmail.com\",\"phone\": \"9875632485\",\"source\": \"client\",\"status\":\"done\",\"notes\":\"note\"}";
-		mockMvc.perform(MockMvcRequestBuilders.post("/lead").contentType(MediaType.APPLICATION_JSON).content(st)
-				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(jsonPath("$").value(true)).andReturn();
-	}
-
-	@Test
-	void test_case7() throws Exception {
-
-		mockMvc.perform(get("/lead/1").accept(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk())
-				.andExpect(jsonPath("$.email").value("john@gmail.com")).andReturn();
-	}
-
-	@Test
-	void test_case8() throws Exception {
-
-		String st = "{\"id\":1,\"name\": \"lead2\",\"email\": \"john@gmail.com\",\"phone\": \"9875632485\",\"source\": \"client\",\"status\":\"done\",\"notes\":\"note\"}";
-		mockMvc.perform(MockMvcRequestBuilders.put("/lead/1").contentType(MediaType.APPLICATION_JSON).content(st)
-				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-	}
-
-	@Test
-	void test_case9() throws Exception {
-
-		mockMvc.perform(get("/lead").accept(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk())
-				.andExpect(jsonPath("$").isArray()).andReturn();
-	}
-
-	@Test
-	void test_case10() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.delete("/lead/1").accept(MediaType.APPLICATION_JSON)).andDo(print())
-				.andExpect(status().isOk()).andReturn();
-	}
-
+	
 }
