@@ -5,6 +5,7 @@ import SideBar from "./components/Sidebar";
 import LeadManagement from "./Pages/Lead/LeadManagement";
 import TaskManagement from "./Pages/Task/TaskManagement";
 import CustomerManagement from "./Pages/Customer/CustomerManagement";
+import TicketManagement from "./Pages/Ticket/TicketManagement";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           <Route path="/customer" element={<CustomerManagement />} />
           <Route path="/task" element={<TaskManagement />} />
           <Route path="/lead" element={<LeadManagement />} />
+          <Route path="/ticket" element={<TicketManagement />} />
+
         </Routes>
       </SideBar>
     </Router>
