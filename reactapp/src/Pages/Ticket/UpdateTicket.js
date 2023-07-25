@@ -13,10 +13,12 @@ const UpdateTicket = ({ ticket, onUpdate, onCancel }) => {
   const handleUpdate = () => {
     const updatedTicket = {
        id: ticket.id,
-      "customerId": ticket.customer_id,
+       customer: {   
+        id: customerId,  
+      },
       "subject": subject,
       "description": description,
-      "status": ticket.status,
+      "status": status,
       "assignedTo": assignedTo,
       "createdAt":createdAt + "T10:00:00" ,
       "updatedAt":updatedAt + "T10:00:00"

@@ -9,9 +9,11 @@ const CreateTicket = ({ onCreate, onCancel }) => {
   const [assignedTo, setAssignedTo] = useState('');
   const [createdAt, setCreatedAt] = useState('');
   const [updatedAt, setUpdatedAt] = useState('');
-
+  
   const handleCustomerIdChange = (e) => {
-    setCustomerId(e.target.value);
+    const value = e.target.value;
+    const numericValue = Number(value)
+      setCustomerId(numericValue);
   };
 
   const handleSubjectChange = (e) => {
@@ -43,16 +45,19 @@ const CreateTicket = ({ onCreate, onCancel }) => {
     return `${year}-${month}-${day}`;
   };
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTicket = {
-      "customerId": customerId,
-      "subject":subject,
-      "description":description,
-      "status":status,
-      "assignedTo":assignedTo,
-      "createdAt": createdAt + "T10:00:00",
-      "updatedAt": updatedAt + "T10:00:00",
+      customer: {   
+        id: customerId,  
+      },
+      subject: subject,
+      description: description,
+      status: status,
+      assignedTo: assignedTo,
+      createdAt: createdAt + "T10:00:00",
+      updatedAt: updatedAt + "T10:00:00",
     };
     onCreate(newTicket);
     setCustomerId('');

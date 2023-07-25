@@ -69,6 +69,7 @@ const TicketTable = () => {
 
   const handleUpdate = updatedTicket => {
     setLoading(true);
+    console.log(updatedTicket)
     fetch(`${BASE_URL}/${updatedTicket.id}`, {
       method: 'PUT',
       headers: {
@@ -143,16 +144,17 @@ const TicketTable = () => {
             </tr>
           </thead>
           <tbody>
-            {tickets.map(ticket => (
-              <tr key={ticket.id}>
-                <td>{ticket.id}</td>
-                <td>{ticket.customerId}</td>
-                <td>{ticket.subject}</td>
-                <td>{ticket.description}</td>
-                <td>{ticket.status}</td>
-                <td>{ticket.assignedTo}</td>
-                <td>{ticket.createdAt}</td>
-                <td>{ticket.updatedAt}</td>
+            {tickets && tickets.length > 0 ? (
+              tickets.map((ticket) => (
+                <tr key={ticket.id}>
+                  <td>{ticket.id}</td>
+                  <td>{ticket.customer?.id}</td> {/* Null check for customer.id */}
+                  <td>{ticket.subject}</td>
+                  <td>{ticket.description}</td>
+                  <td>{ticket.status}</td>
+                  <td>{ticket.assignedTo}</td>
+                  <td>{ticket.createdAt}</td>
+                  <td>{ticket.updatedAt}</td>
                 <td>
                   <button className="btn btn-primary btn-sm" onClick={() => handleEdit(ticket)}>
                     <FontAwesomeIcon icon={faEdit} />
@@ -162,7 +164,12 @@ const TicketTable = () => {
                   </button>
                 </td>
               </tr>
-            ))}
+            ))
+            ) : (
+              <tr>
+                <td colSpan="9">No tickets found.</td>
+              </tr>
+            )}
           </tbody>
         </table>
       )}
