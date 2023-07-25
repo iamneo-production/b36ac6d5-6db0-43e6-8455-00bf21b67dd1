@@ -1,9 +1,9 @@
 com/examly/springapp/service/impl/CustomerServiceImpl.class
 com/examly/springapp/SpringappApplication.class
-com/examly/springapp/service/LeadService.class
 com/examly/springapp/repository/LeadRepository.class
-com/examly/springapp/service/impl/LeadServiceImpl.class
+com/examly/springapp/service/LeadService.class
 com/examly/springapp/repository/CustomerRepository.class
+com/examly/springapp/service/impl/LeadServiceImpl.class
 com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/model/Customer.class
 com/examly/springapp/controller/LeadController.class
