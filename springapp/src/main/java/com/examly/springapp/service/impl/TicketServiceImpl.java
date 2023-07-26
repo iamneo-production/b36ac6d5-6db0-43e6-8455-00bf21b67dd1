@@ -54,4 +54,9 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = getTicketById(ticketId);
         ticketRepository.delete(ticket);
     }
+
+    @Override
+    public long getTotalTicketsCount() {
+        return ticketRepository.count();
+    }
 }

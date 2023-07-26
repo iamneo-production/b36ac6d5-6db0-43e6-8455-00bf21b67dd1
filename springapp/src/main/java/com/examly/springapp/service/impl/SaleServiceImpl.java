@@ -53,4 +53,9 @@ public class SaleServiceImpl implements SaleService {
         Sale sale = getSaleById(saleId);
         saleRepository.delete(sale);
     }
+
+    @Override
+    public long getTotalSalesCount() {
+        return saleRepository.count();
+    }
 }

@@ -16,4 +16,6 @@ public interface SaleService {
     Sale updateSale(Long saleId, Sale saleDetails) throws ResourceNotFoundException;
 
     void deleteSale(Long saleId) throws ResourceNotFoundException;
+
+    long getTotalSalesCount();
 }
