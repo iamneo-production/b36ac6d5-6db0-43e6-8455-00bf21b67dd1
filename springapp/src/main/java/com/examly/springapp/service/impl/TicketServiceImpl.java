@@ -1,5 +1,4 @@
 package com.examly.springapp.service.impl;
-
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Ticket;
 import com.examly.springapp.repository.TicketRepository;

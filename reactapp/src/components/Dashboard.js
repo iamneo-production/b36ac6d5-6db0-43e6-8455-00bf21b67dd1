@@ -108,7 +108,6 @@ const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.exa
       });
   };
 
-  
   const fetchCustomers = () => {
     fetch(`${BASE_URL}/customer`)
       .then(response => response.json())

@@ -1,5 +1,4 @@
 package com.examly.springapp.controller;
-
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Lead;
 import com.examly.springapp.service.LeadService;
