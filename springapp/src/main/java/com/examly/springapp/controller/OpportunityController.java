@@ -1,5 +1,6 @@
 package com.examly.springapp.controller;
 
+
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Opportunity;
 import com.examly.springapp.service.OpportunityService;
@@ -22,6 +23,12 @@ public class OpportunityController {
     @GetMapping
     public List<Opportunity> getAllOpportunities() {
         return opportunityService.getAllOpportunities();
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalOpportunitiesCount() {
+        long count = opportunityService.getTotalOpportunitiesCount();
+        return ResponseEntity.ok(count);
     }
 
     @PostMapping

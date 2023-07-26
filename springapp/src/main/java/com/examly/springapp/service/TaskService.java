@@ -5,6 +5,7 @@ import com.examly.springapp.model.Task;
 
 import java.util.List;
 
+
 public interface TaskService {
 
     List<Task> getAllTasks();
@@ -18,4 +19,6 @@ public interface TaskService {
     void deleteTask(Long taskId) throws ResourceNotFoundException;
 
     void deleteAllTasks();
+
+    long getTotalTasksCount();
 }

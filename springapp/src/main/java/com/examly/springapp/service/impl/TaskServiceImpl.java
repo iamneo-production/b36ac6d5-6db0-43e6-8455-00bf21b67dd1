@@ -22,6 +22,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task getTaskById(Long taskId) throws ResourceNotFoundException {
         Optional<Task> task = taskRepository.findById(taskId);
+        
         if (task.isPresent()) {
             return task.get();
         } else {
@@ -56,5 +57,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteAllTasks() {
         taskRepository.deleteAll();
+    }
+
+    @Override
+    public long getTotalTasksCount() {
+        return taskRepository.count();
     }
 }

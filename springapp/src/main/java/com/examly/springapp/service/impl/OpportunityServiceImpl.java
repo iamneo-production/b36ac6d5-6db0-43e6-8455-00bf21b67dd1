@@ -1,5 +1,6 @@
 package com.examly.springapp.service.impl;
 
+
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Opportunity;
 import com.examly.springapp.repository.OpportunityRepository;
@@ -52,5 +53,10 @@ public class OpportunityServiceImpl implements OpportunityService {
     public void deleteOpportunity(Long opportunityId) throws ResourceNotFoundException {
         Opportunity opportunity = getOpportunityById(opportunityId);
         opportunityRepository.delete(opportunity);
+    }
+
+    @Override
+    public long getTotalOpportunitiesCount() {
+        return opportunityRepository.count();
     }
 }

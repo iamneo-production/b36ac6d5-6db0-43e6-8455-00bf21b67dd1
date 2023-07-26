@@ -24,6 +24,12 @@ public class SaleController {
         return saleService.getAllSales();
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalSalesCount() {
+        long count = saleService.getTotalSalesCount();
+        return ResponseEntity.ok(count);
+    }
+
     @PostMapping
     public ResponseEntity<Boolean> createSale(@RequestBody Sale sale) {
         Sale createdSale = saleService.createSale(sale);

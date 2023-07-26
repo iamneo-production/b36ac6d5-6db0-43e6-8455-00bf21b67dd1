@@ -17,4 +17,6 @@ public interface LeadService {
     void deleteLead(Long leadId) throws ResourceNotFoundException;
 
     void deleteAllLeads();
+
+    long getTotalLeadsCount();
 }
