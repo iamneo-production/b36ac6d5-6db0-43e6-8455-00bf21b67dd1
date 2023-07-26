@@ -23,6 +23,12 @@ public class LeadController {
     public List<Lead> getAllLeads() {
         return leadService.getAllLeads();
     }
+    
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalLeadsCount() {
+        long count = leadService.getTotalLeadsCount();
+        return ResponseEntity.ok(count);
+    }
 
     @PostMapping
     public ResponseEntity<Boolean> createLead(@RequestBody Lead lead) {

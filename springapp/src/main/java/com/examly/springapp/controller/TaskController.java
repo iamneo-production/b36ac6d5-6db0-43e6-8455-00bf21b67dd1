@@ -25,6 +25,12 @@ public class TaskController {
         return taskService.getAllTasks();
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalTasksCount() {
+        long count = taskService.getTotalTasksCount();
+        return ResponseEntity.ok(count);
+    }
+
     @PostMapping
     public ResponseEntity<Boolean> createTask(@RequestBody Task task) {
         Task createdTask = taskService.createTask(task);

@@ -23,13 +23,18 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalCustomersCount() {
+        long count = customerService.getTotalCustomersCount();
+        return ResponseEntity.ok(count);
+    }
+
     @PostMapping
     public ResponseEntity<Boolean> createCustomer(@RequestBody Customer customer) {
         Customer createdCustomer = customerService.createCustomer(customer);
         boolean isSuccess = createdCustomer != null;
         return ResponseEntity.ok(isSuccess);
     }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "id") Long customerId)

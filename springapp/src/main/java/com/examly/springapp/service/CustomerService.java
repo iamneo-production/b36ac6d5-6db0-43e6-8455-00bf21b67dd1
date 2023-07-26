@@ -15,4 +15,6 @@ public interface CustomerService {
     Customer updateCustomer(Long customerId, Customer customerDetails) throws ResourceNotFoundException;
 
     void deleteCustomer(Long customerId) throws ResourceNotFoundException;
+
+    long getTotalCustomersCount();
 }
