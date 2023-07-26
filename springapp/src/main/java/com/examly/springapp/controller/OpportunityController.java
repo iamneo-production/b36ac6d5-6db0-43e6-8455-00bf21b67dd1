@@ -24,6 +24,12 @@ public class OpportunityController {
         return opportunityService.getAllOpportunities();
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalOpportunitiesCount() {
+        long count = opportunityService.getTotalOpportunitiesCount();
+        return ResponseEntity.ok(count);
+    }
+
     @PostMapping
     public ResponseEntity<Boolean> createOpportunity(@RequestBody Opportunity opportunity) {
         Opportunity createdOpportunity = opportunityService.createOpportunity(opportunity);

@@ -18,4 +18,6 @@ public interface TaskService {
     void deleteTask(Long taskId) throws ResourceNotFoundException;
 
     void deleteAllTasks();
+
+    long getTotalTasksCount();
 }
