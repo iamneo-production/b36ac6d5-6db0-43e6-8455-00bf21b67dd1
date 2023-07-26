@@ -2,6 +2,7 @@ package com.examly.springapp.service.impl;
 
 
 import com.examly.springapp.Exception.ResourceNotFoundException;
+
 import com.examly.springapp.model.Opportunity;
 import com.examly.springapp.repository.OpportunityRepository;
 import com.examly.springapp.service.OpportunityService;

@@ -8,6 +8,7 @@ import TaskManagement from "./Pages/Task/TaskManagement";
 import CustomerManagement from "./Pages/Customer/CustomerManagement";
 import OpportunityDetails from "./Pages/Opportunity/OpportunityDetails";
 import OpportunityPipeline from "./Pages/Opportunity/OpportunityPipeline";
+import TicketManagement from "./Pages/Ticket/TicketManagement";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/lead" element={<LeadManagement />} />
           <Route path="/oppo" element={<OpportunityPipeline />} />
           <Route path="/opportunity/:id" element={<OpportunityDetails />} />
+          <Route path="/ticket" element={<TicketManagement />} />
         </Routes>
       </SideBar>
     </Router>
