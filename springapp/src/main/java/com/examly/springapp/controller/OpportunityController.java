@@ -1,5 +1,6 @@
 package com.examly.springapp.controller;
 
+
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Opportunity;
 import com.examly.springapp.service.OpportunityService;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+
 import java.util.Map;
 
 @RestController

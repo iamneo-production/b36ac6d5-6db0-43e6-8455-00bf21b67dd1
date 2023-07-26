@@ -24,12 +24,15 @@ public class TicketController {
         return ticketService.getAllTickets();
     }
 
+<<<<<<< HEAD
     @GetMapping("/count")
     public ResponseEntity<Long> getTotalTicketsCount() {
         long count = ticketService.getTotalTicketsCount();
         return ResponseEntity.ok(count);
     }
 
+=======
+>>>>>>> 12b8c64d86025c7f46edb92879398829c69ee108
     @PostMapping
     public ResponseEntity<Boolean> createTicket(@RequestBody Ticket ticket) {
         Ticket createdTicket = ticketService.createTicket(ticket);

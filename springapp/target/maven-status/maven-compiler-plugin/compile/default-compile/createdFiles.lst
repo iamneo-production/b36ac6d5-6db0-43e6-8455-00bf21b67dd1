@@ -9,14 +9,24 @@ com/examly/springapp/service/LeadService.class
 com/examly/springapp/repository/LeadRepository.class
 com/examly/springapp/service/SaleService.class
 com/examly/springapp/model/Ticket.class
+<<<<<<< HEAD
+=======
+com/examly/springapp/controller/TaskController.class
+>>>>>>> 12b8c64d86025c7f46edb92879398829c69ee108
 com/examly/springapp/model/Opportunity.class
 com/examly/springapp/controller/TaskController.class
 com/examly/springapp/service/impl/LeadServiceImpl.class
 com/examly/springapp/controller/EmailController.class
 com/examly/springapp/service/impl/SaleServiceImpl.class
+<<<<<<< HEAD
 com/examly/springapp/repository/TicketRepository.class
 com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/controller/TicketController.class
+=======
+com/examly/springapp/controller/TicketController.class
+com/examly/springapp/controller/CustomerController.class
+com/examly/springapp/repository/TicketRepository.class
+>>>>>>> 12b8c64d86025c7f46edb92879398829c69ee108
 com/examly/springapp/model/Customer.class
 com/examly/springapp/controller/LeadController.class
 com/examly/springapp/Exception/ResourceNotFoundException.class
