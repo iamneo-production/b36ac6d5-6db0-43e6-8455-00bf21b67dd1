@@ -17,7 +17,7 @@ body {
   width: 200px;
   background-color: #1e477eff;
   color: #d6e3ffff;
-  height: 200vh;
+  height: 100vh;
   overflow-y: auto;
   transition: width 0.5s ease-in-out;
 }
