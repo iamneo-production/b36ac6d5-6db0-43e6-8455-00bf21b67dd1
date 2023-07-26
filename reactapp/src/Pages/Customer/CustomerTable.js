@@ -10,7 +10,6 @@ import './CustomerTable.css';
 
 const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/customer';
 
-
 const CustomerTable = () => {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
