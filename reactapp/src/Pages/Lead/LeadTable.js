@@ -7,6 +7,7 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './LeadTable.css';
 
+
 const BASE_URL = 'https://8080-eccdafbbfbabafcfcbeaefdbdfafedfbadebae.project.examly.io/lead';
 
 const LeadTable = () => {
