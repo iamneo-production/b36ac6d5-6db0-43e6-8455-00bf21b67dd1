@@ -35,8 +35,6 @@
 =======
 <<<<<<< HEAD
 =======
-<<<<<<< HEAD
-=======
 >>>>>>> 275976e20d70581e96923c1719ee4536e903fed2
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
 		<attributes>
@@ -55,7 +53,6 @@
 =======
 >>>>>>> f12eedf4c625e8353a9e0bcc06c21ba0d197bdc8
 >>>>>>> 275976e20d70581e96923c1719ee4536e903fed2
->>>>>>> af37fb4ba5e22131cdfe567e92a26ffa22de54c1
 	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
 		<attributes>
 			<attribute name="optional" value="true"/>

@@ -1,4 +1,5 @@
 package com.examly.springapp.controller;
+
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.service.CustomerService;
@@ -8,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
 
 @RestController
 @RequestMapping("/customer")
@@ -24,18 +23,13 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("/count")
-    public ResponseEntity<Long> getTotalCustomersCount() {
-        long count = customerService.getTotalCustomersCount();
-        return ResponseEntity.ok(count);
-    }
-
     @PostMapping
     public ResponseEntity<Boolean> createCustomer(@RequestBody Customer customer) {
         Customer createdCustomer = customerService.createCustomer(customer);
         boolean isSuccess = createdCustomer != null;
         return ResponseEntity.ok(isSuccess);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "id") Long customerId)

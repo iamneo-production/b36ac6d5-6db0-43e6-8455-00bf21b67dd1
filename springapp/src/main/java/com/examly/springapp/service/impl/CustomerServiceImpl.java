@@ -1,4 +1,5 @@
 package com.examly.springapp.service.impl;
+
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.repository.CustomerRepository;
@@ -50,10 +51,5 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(Long customerId) throws ResourceNotFoundException {
         Customer customer = getCustomerById(customerId);
         customerRepository.delete(customer);
-    }
-
-    @Override
-    public long getTotalCustomersCount() {
-        return customerRepository.count();
     }
 }
