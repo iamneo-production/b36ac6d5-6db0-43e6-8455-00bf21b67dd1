@@ -60,7 +60,6 @@ class SpringappApplicationTests {
 				.andExpect(jsonPath("$").isArray()).andReturn();
 	}
 
-
 	@Test
 	void test_case5() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.delete("/lead/1").accept(MediaType.APPLICATION_JSON)).andDo(print())
@@ -100,10 +99,8 @@ class SpringappApplicationTests {
 
 	@Test
 	void test_case10() throws Exception {
-
 		mockMvc.perform(MockMvcRequestBuilders.delete("/lead/1").accept(MediaType.APPLICATION_JSON)).andDo(print())
 				.andExpect(status().isOk()).andReturn();
 	}
 
-	
 }
