@@ -36,10 +36,9 @@ public class LeadController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Lead> getLeadById(@PathVariable(value = "id") Long leadId)
-            throws ResourceNotFoundException {
-        Lead lead = leadService.getLeadById(leadId);
-        return ResponseEntity.ok().body(lead);
+    public ResponseEntity<Lead> getLeadById(@PathVariable Long id) throws ResourceNotFoundException {
+        Lead lead = leadService.getLeadById(id);
+        return ResponseEntity.ok(lead);
     }
 
     @PutMapping("/{id}")

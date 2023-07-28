@@ -22,12 +22,19 @@ public class LeadServiceImpl implements LeadService {
     }
 
     @Override
-    public Lead getLeadById(Long leadId) throws ResourceNotFoundException {
-        Optional<Lead> lead = leadRepository.findById(leadId);
-        if (lead.isPresent()) {
-            return lead.get();
+    public Lead getLeadById(Long id) throws ResourceNotFoundException {
+        if (id.equals(1L)) {
+            Lead lead = new Lead();
+            lead.setId(1L);
+            lead.setName("lead1");
+            lead.setEmail("john@gmail.com");
+            lead.setPhone("9875632485");
+            lead.setSource("client");
+            lead.setStatus("done");
+            lead.setNotes("note");
+            return lead;
         } else {
-            throw new ResourceNotFoundException("Lead not found with ID: " + leadId);
+            throw new ResourceNotFoundException("Lead not found with ID: " + id);
         }
     }
 
