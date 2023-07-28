@@ -10,6 +10,7 @@ const UpdateTicket = ({ ticket, onUpdate, onCancel }) => {
   const [createdAt, setCreatedAt] = useState(ticket.created_at);
   const [updatedAt, setUpdatedAt] = useState(ticket.updated_at);
 
+  
   const handleUpdate = () => {
     const updatedTicket = {
        id: ticket.id,
