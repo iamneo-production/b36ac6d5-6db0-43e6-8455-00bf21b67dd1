@@ -6,7 +6,6 @@ import com.examly.springapp.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +21,12 @@ public class TicketController {
     @GetMapping
     public List<Ticket> getAllTickets() {
         return ticketService.getAllTickets();
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalTicketsCount() {
+        long count = ticketService.getTotalTicketsCount();
+        return ResponseEntity.ok(count);
     }
 
     @PostMapping

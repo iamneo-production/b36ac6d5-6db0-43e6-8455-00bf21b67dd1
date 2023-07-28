@@ -1,5 +1,4 @@
 package com.examly.springapp.service;
-
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Sale;
 
@@ -16,4 +15,6 @@ public interface SaleService {
     Sale updateSale(Long saleId, Sale saleDetails) throws ResourceNotFoundException;
 
     void deleteSale(Long saleId) throws ResourceNotFoundException;
+
+    long getTotalSalesCount();
 }

@@ -15,6 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/task")
 @CrossOrigin()
+
 public class TaskController {
 
     @Autowired
@@ -23,6 +24,12 @@ public class TaskController {
     @GetMapping
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalTasksCount() {
+        long count = taskService.getTotalTasksCount();
+        return ResponseEntity.ok(count);
     }
 
     @PostMapping

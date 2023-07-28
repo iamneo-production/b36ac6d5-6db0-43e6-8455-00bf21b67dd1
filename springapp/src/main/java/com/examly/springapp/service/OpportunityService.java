@@ -16,4 +16,7 @@ public interface OpportunityService {
     Opportunity updateOpportunity(Long opportunityId, Opportunity opportunityDetails) throws ResourceNotFoundException;
 
     void deleteOpportunity(Long opportunityId) throws ResourceNotFoundException;
+
+    long getTotalOpportunitiesCount();
+    
 }

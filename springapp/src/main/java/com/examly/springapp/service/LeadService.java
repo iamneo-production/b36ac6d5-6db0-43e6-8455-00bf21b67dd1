@@ -1,5 +1,4 @@
 package com.examly.springapp.service;
-
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Lead;
 
@@ -18,4 +17,7 @@ public interface LeadService {
     void deleteLead(Long leadId) throws ResourceNotFoundException;
 
     void deleteAllLeads();
+
+    long getTotalLeadsCount();
 }
+

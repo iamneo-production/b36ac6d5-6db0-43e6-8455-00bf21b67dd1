@@ -1,5 +1,4 @@
 package com.examly.springapp.controller;
-
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Lead;
 import com.examly.springapp.service.LeadService;
@@ -23,6 +22,12 @@ public class LeadController {
     @GetMapping
     public List<Lead> getAllLeads() {
         return leadService.getAllLeads();
+    }
+    
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalLeadsCount() {
+        long count = leadService.getTotalLeadsCount();
+        return ResponseEntity.ok(count);
     }
 
     @PostMapping

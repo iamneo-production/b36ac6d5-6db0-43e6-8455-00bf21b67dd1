@@ -1,5 +1,4 @@
 package com.examly.springapp.service.impl;
-
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Sale;
 import com.examly.springapp.repository.SaleRepository;
@@ -52,5 +51,10 @@ public class SaleServiceImpl implements SaleService {
     public void deleteSale(Long saleId) throws ResourceNotFoundException {
         Sale sale = getSaleById(saleId);
         saleRepository.delete(sale);
+    }
+
+    @Override
+    public long getTotalSalesCount() {
+        return saleRepository.count();
     }
 }

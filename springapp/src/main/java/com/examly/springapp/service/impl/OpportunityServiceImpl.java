@@ -53,4 +53,9 @@ public class OpportunityServiceImpl implements OpportunityService {
         Opportunity opportunity = getOpportunityById(opportunityId);
         opportunityRepository.delete(opportunity);
     }
+
+    @Override
+    public long getTotalOpportunitiesCount() {
+        return opportunityRepository.count();
+    }
 }

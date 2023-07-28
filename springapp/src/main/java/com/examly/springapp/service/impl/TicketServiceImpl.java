@@ -1,5 +1,4 @@
 package com.examly.springapp.service.impl;
-
 import com.examly.springapp.Exception.ResourceNotFoundException;
 import com.examly.springapp.model.Ticket;
 import com.examly.springapp.repository.TicketRepository;
@@ -53,5 +52,10 @@ public class TicketServiceImpl implements TicketService {
     public void deleteTicket(Long ticketId) throws ResourceNotFoundException {
         Ticket ticket = getTicketById(ticketId);
         ticketRepository.delete(ticket);
+    }
+
+    @Override
+    public long getTotalTicketsCount() {
+        return ticketRepository.count();
     }
 }

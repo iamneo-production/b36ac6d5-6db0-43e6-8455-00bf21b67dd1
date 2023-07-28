@@ -6,7 +6,6 @@ import com.examly.springapp.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +21,12 @@ public class SaleController {
     @GetMapping
     public List<Sale> getAllSales() {
         return saleService.getAllSales();
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalSalesCount() {
+        long count = saleService.getTotalSalesCount();
+        return ResponseEntity.ok(count);
     }
 
     @PostMapping

@@ -16,4 +16,6 @@ public interface TicketService {
     Ticket updateTicket(Long ticketId, Ticket ticketDetails) throws ResourceNotFoundException;
 
     void deleteTicket(Long ticketId) throws ResourceNotFoundException;
+
+    long getTotalTicketsCount();
 }

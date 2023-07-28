@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import CreateLead from './CreateLead';
-import UpdateLead from './UpdateLead';
-import SearchLead from './SearchLead';
+import CreateTicket from './CreateTicket';
+import UpdateTicket from './UpdateTicket';
+import SearchTicket from './SearchTicket';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './LeadTable.css';
+import './TicketTable.css'; 
 
-const BASE_URL = 'https://8080-bffdfbaeafafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/lead';
+const BASE_URL = 'https://8080-eccdafbbfbabafcfcbeaefdbdfaeaeaadbdbabf.project.examly.io/ticket';
 
-const LeadTable = () => {
-  const [leads, setLeads] = useState([]);
+const TicketTable = () => {
+  const [tickets, setTickets] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const [selectedLead, setSelectedLead] = useState(null);
+  const [selectedTicket, setSelectedTicket] = useState(null);
 
   useEffect(() => {
-    fetchLeads();
+    fetchTickets();
   }, []);
 
-  const fetchLeads = () => {
+  const fetchTickets = () => {
     setLoading(true);
     fetch(BASE_URL)
       .then(response => response.json())
-      .then(data => setLeads(data))
+      .then(data => setTickets(data))
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
@@ -39,67 +39,68 @@ const LeadTable = () => {
       .then(response => response.json())
       .then(data => {
         if (data) {
-          setLeads([data]);
+          setTickets([data]);
         } else {
-          setLeads([]);
+          setTickets([]);
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleDelete = leadId => {
+  const handleDelete = ticketId => {
     setLoading(true);
-    fetch(`${BASE_URL}/${leadId}`, {
+    fetch(`${BASE_URL}/${ticketId}`, {
       method: 'DELETE',
     })
       .then(response => response.json())
       .then(data => {
         if (data.deleted) {
-          fetchLeads();
+          fetchTickets();
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleEdit = lead => {
-    setSelectedLead(lead);
+  const handleEdit = ticket => {
+    setSelectedTicket(ticket);
   };
 
-  const handleUpdate = updatedLead => {
+  const handleUpdate = updatedTicket => {
     setLoading(true);
-    fetch(`${BASE_URL}/${updatedLead.id}`, {
+    console.log(updatedTicket)
+    fetch(`${BASE_URL}/${updatedTicket.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedLead),
+      body: JSON.stringify(updatedTicket),
     })
       .then(response => response.json())
       .then(data => {
         if (data.id) {
-          fetchLeads();
-          setSelectedLead(null);
+          fetchTickets();
+          setSelectedTicket(null);
         }
       })
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const handleCreate = newLead => {
+  const handleCreate = newTicket => {
     setLoading(true);
     fetch(BASE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newLead),
+      body: JSON.stringify(newTicket),
     })
       .then(response => response.json())
       .then(data => {
         if (data) {
-          fetchLeads();
+          fetchTickets();
           setShowCreateForm(false);
         }
       })
@@ -108,21 +109,21 @@ const LeadTable = () => {
   };
 
   const handleCloseForm = () => {
-    setSelectedLead(null);
+    setSelectedTicket(null);
     setShowCreateForm(false);
   };
 
   return (
-    <div className="container" >
-      <h2>Leads</h2>
+    <div className="container">
+      <h2>Tickets</h2>
       <div className="mb-3">
-        <SearchLead
+        <SearchTicket
           searchQuery={searchQuery}
           onSearchChange={handleSearchChange}
           onSearch={handleSearch}
         />
         <button className="btn btn-primary" onClick={() => setShowCreateForm(true)}>
-          Create Lead
+          Create Ticket
         </button>
       </div>
       {loading ? (
@@ -132,52 +133,60 @@ const LeadTable = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Source</th>
+              <th>Customer ID</th>
+              <th>Subject</th>
+              <th>Description</th>
               <th>Status</th>
-              <th>Notes</th>
+              <th>Assigned To</th>
+              <th>Created At</th>
+              <th>Updated At</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {leads.map(lead => (
-              <tr key={lead.id}>
-                <td>{lead.id}</td>
-                <td>{lead.name}</td>
-                <td>{lead.email}</td>
-                <td>{lead.phone}</td>
-                <td>{lead.source}</td>
-                <td>{lead.status}</td>
-                <td>{lead.notes}</td>
+            {tickets && tickets.length > 0 ? (
+              tickets.map((ticket) => (
+                <tr key={ticket.id}>
+                  <td>{ticket.id}</td>
+                  <td>{ticket.customer?.id}</td> {/* Null check for customer.id */}
+                  <td>{ticket.subject}</td>
+                  <td>{ticket.description}</td>
+                  <td>{ticket.status}</td>
+                  <td>{ticket.assignedTo}</td>
+                  <td>{ticket.createdAt}</td>
+                  <td>{ticket.updatedAt}</td>
                 <td>
-                  <button className="btn btn-primary btn-sm" onClick={() => handleEdit(lead)}>
+                  <button className="btn btn-primary btn-sm" onClick={() => handleEdit(ticket)}>
                     <FontAwesomeIcon icon={faEdit} />
                   </button>
-                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(lead.id)}>
+                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(ticket.id)}>
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </td>
               </tr>
-            ))}
+            ))
+            ) : (
+              <tr>
+                <td colSpan="9">No tickets found.</td>
+              </tr>
+            )}
           </tbody>
         </table>
       )}
 
       {showCreateForm && (
         <div className="popup-form">
-          <CreateLead onCreate={handleCreate} onCancel={handleCloseForm} />
+          <CreateTicket onCreate={handleCreate} onCancel={handleCloseForm} />
         </div>
       )}
 
-      {selectedLead && (
+      {selectedTicket && (
         <div className="popup-form">
-          <UpdateLead lead={selectedLead} onUpdate={handleUpdate} onCancel={handleCloseForm} />
+          <UpdateTicket ticket={selectedTicket} onUpdate={handleUpdate} onCancel={handleCloseForm} />
         </div>
       )}
     </div>
   );
 };
 
-export default LeadTable;
+export default TicketTable;
