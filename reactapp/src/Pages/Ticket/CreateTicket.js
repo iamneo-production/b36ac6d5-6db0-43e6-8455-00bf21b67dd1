@@ -59,6 +59,7 @@ const CreateTicket = ({ onCreate, onCancel }) => {
       createdAt: createdAt + "T10:00:00",
       updatedAt: updatedAt + "T10:00:00",
     };
+    
     onCreate(newTicket);
     setCustomerId('');
     setSubject('');

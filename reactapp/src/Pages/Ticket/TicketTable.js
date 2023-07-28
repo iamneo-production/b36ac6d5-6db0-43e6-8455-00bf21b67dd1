@@ -122,6 +122,7 @@ const TicketTable = () => {
           onSearchChange={handleSearchChange}
           onSearch={handleSearch}
         />
+        
         <button className="btn btn-primary" onClick={() => setShowCreateForm(true)}>
           Create Ticket
         </button>
