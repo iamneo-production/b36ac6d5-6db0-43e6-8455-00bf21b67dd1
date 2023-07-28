@@ -27,6 +27,7 @@ const UpdateTicket = ({ ticket, onUpdate, onCancel }) => {
     onUpdate(updatedTicket);
   };
 
+  
   const handleCustomerIdChange = (e) => {
     setCustomerId(e.target.value);
   };

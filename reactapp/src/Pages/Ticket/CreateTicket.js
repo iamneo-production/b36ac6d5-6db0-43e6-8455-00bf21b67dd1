@@ -68,6 +68,7 @@ const CreateTicket = ({ onCreate, onCancel }) => {
     setCreatedAt('');
     setUpdatedAt('');
   };
+  
 
   return (
     <div className="create-task-container">

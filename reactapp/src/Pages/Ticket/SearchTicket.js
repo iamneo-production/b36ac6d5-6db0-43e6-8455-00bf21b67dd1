@@ -14,4 +14,5 @@ const SearchTicket = ({ searchQuery, onSearchChange, onSearch }) => {
   );
 };
 
+
 export default SearchTicket;
