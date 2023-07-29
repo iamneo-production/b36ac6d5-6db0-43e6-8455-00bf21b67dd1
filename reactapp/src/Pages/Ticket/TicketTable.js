@@ -133,6 +133,7 @@ const TicketTable = () => {
         <table className="table table-striped">
           <thead>
             <tr>
+              
               <th>ID</th>
               <th>Customer ID</th>
               <th>Subject</th>
