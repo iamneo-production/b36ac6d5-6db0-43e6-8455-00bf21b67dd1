@@ -10,6 +10,7 @@ import { BiSolidUserCircle } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 
+
 const routes = [
   {
     path: "/",
